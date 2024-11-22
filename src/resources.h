@@ -6,6 +6,8 @@
 typedef struct {
     SDL_Window *window;
     SDL_Renderer *renderer;
+    int LARGURA_TELA, ALTURA_TELA;
+    int error_status;
     
 } Resources;
 
