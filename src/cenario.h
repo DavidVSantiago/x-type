@@ -3,5 +3,10 @@
 #include <stdio.h>
 
 class Cenario(){
-    
+private:
+    /* ATRIBUTOS PRIVADOS */
+    /* MÉTODOS PRIVADOS */
+public:
+    /* ATRIBUTOS PÚBLICOS */
+    /* MÉTODOS PÚBLICOS */
 }

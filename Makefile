@@ -1,4 +1,4 @@
-COMPILER=g++#variável que define o compilador
+COMPILER=g++ #variável que define o compilador
 
 # variável que define o nome do executável .exe
 ifeq ($(OS),Windows_NT)
@@ -7,20 +7,22 @@ else
 	EXE=bin/linux/game
 endif
 
-# variável que define os arquivos fonte a serem compilados. o '\' é um separador para novas linhas
-SRC = \
-	src/utils/libs/lodepng.cpp \
-	src/utils/resources.c \
-	src/cenario.cpp \
-	src/game.c \
-	src/main.c
+SRC_C = \
+
+SRC_CPP = \
+	src/engine/Resources.cpp \
+	src/engine/Engine.cpp \
+	src/game.cpp \
+	src/main.cpp
 
 # lista de arquivos objetos, referentes a cada arquivo fonte.
 # $(SRC) -  aplicar o padrão à lista definida na variável SRC
 ifeq ($(OS),Windows_NT)
-	OBJ=$(patsubst src/%.c,.obj/windows/%.o,$(SRC))
+	OBJ := $(patsubst src/%.cpp,.obj/windows/%.o,$(SRC_CPP)) \
+	       $(patsubst src/%.c,.obj/windows/%.o,$(SRC_C))
 else
-	OBJ=$(patsubst src/%.c,.obj/linux/%.o,$(SRC))
+	OBJ := $(patsubst src/%.cpp,.obj/linux/%.o,$(SRC_CPP)) \
+	       $(patsubst src/%.c,.obj/linux/%.o,$(SRC_C))
 endif
 
 # CFLAGS é a variável para formar as flags de compilação
@@ -40,18 +42,28 @@ ifeq ($(OS),Windows_NT)
 #LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mwindows -static -lwinmm -loleaut32 -lSetupapi -lImm32 -lVersion -lOle32 -static-libgcc -static-libstdc++
 else
 	LDFLAGS := -Llib/linux/lib -lSDL2main -lSDL2 -Wl,-rpath,lib/linux/lib -Wl,--enable-new-dtags -Wl,-Bstatic -Wl,-Bdynamic -lm -ldl -lpthread -lrt
-# LDFLAGS := -Llib/linux/lib -lSDL2main -lSDL2
+#LDFLAGS := -Llib/linux/lib -lSDL2main -lSDL2
 endif
 
 all: $(EXE) # ?????
 .PHONY: all
 
-# Regra para compilar arquivos objetos
+# Regra para compilar arquivos .cpp
 ifeq ($(OS),Windows_NT)
-$(OBJ): .obj/windows%.o : src/%.c
+.obj/windows/%.o: src/%.cpp
 	@if not exist $(dir $@) mkdir $(subst /,\,$(dir $@))
 else
-$(OBJ): .obj/linux%.o : src/%.c
+.obj/linux/%.o: src/%.cpp
+	mkdir -p $(dir $@)
+endif
+	$(COMPILER) $(CFLAGS) -c $< -o $@
+
+# Regra para compilar arquivos .c
+ifeq ($(OS),Windows_NT)
+.obj/windows/%.o: src/%.c
+	@if not exist $(dir $@) mkdir $(subst /,\,$(dir $@))
+else
+.obj/linux/%.o: src/%.c
 	mkdir -p $(dir $@)
 endif
 	$(COMPILER) $(CFLAGS) -c $< -o $@

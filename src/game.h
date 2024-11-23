@@ -1,25 +1,10 @@
 #pragma once
 #include <SDL2/SDL.h>
-#include <stdio.h>
-#include "cenario.h"
-#include "utils/resources.h"
+#include "engine/Engine.h"
 
-class Game{
-private:
-    /* ATRIBUTOS PRIVADOS */
-    int game_isRunning;
-    SDL_Event game_event;
-
-    /* MÉTODOS PRIVADOS */
+class Game: public Engine{
 public:
-    /* ATRIBUTOS PÚBLICOS */
-    Resources* res = NULL;
-    Cenario cenarioAtual;
-    
-    /* MÉTODOS PÚBLICOS */
-    void gameInit();
-    void gameloop();
-    void handleEvents();
-    void update();
-    void render();
-}
+    /* CONSTRUTORES E DESTRUTORES */
+    Game(int width, int height);
+    ~Game();
+};
