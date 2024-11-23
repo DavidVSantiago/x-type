@@ -1,22 +1,17 @@
 #include "game.h"
 
 /** ATRIBUTOS */
-int game_isRunning;
-SDL_Event game_event;
-Resources* res = NULL;
-Cenario* cenarioAtual;
 
 // Definições das funções 
-void gameInit(){
+void Game::gameInit(){
     res = getResourceInstance(); // obtém a intância de recursos
     game_isRunning = 1;
 
     // carregar o cenário, juntamente com as imagens referêntes ao cenário
-    cenarioAtual = carregarCenario("fase_01");
 
     gameloop();
 }
-void gameloop() {
+void Game::gameloop() {
     while (game_isRunning) {
 
         handleEvents();// trata os eventos
@@ -25,7 +20,7 @@ void gameloop() {
     }
 }
 
-void handleEvents() {
+void Game::handleEvents() {
     /** Teste de eventos do SDL*/
     while (SDL_PollEvent(&game_event)) {
         switch (game_event.type) {
@@ -36,13 +31,13 @@ void handleEvents() {
                 if (game_event.key.keysym.sym == SDLK_ESCAPE) game_isRunning = 0;
         }
     }
-    cenarioAtual.handleEvents();
+    // cenarioAtual.handleEvents();
 }
-void update() {
-    cenarioAtual.update();
+void Game::update() {
+    // cenarioAtual.update();
 }
-void render() {
-    cenarioAtual.render();
+void Game::render() {
+    // cenarioAtual.render();
     // SDL_RenderClear(res->renderer);
     // SDL_RenderPresent(res->renderer);
 }

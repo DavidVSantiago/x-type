@@ -1,4 +1,4 @@
-COMPILER=gcc#variável que define o compilador
+COMPILER=g++#variável que define o compilador
 
 # variável que define o nome do executável .exe
 ifeq ($(OS),Windows_NT)
@@ -9,7 +9,9 @@ endif
 
 # variável que define os arquivos fonte a serem compilados. o '\' é um separador para novas linhas
 SRC = \
-	src/resources.c \
+	src/utils/libs/lodepng.cpp \
+	src/utils/resources.c \
+	src/cenario.cpp \
 	src/game.c \
 	src/main.c
 
@@ -47,10 +49,10 @@ all: $(EXE) # ?????
 # Regra para compilar arquivos objetos
 ifeq ($(OS),Windows_NT)
 $(OBJ): .obj/windows%.o : src/%.c
-	@if not exist .obj\windows mkdir -p .obj\windows
+	@if not exist $(dir $@) mkdir $(subst /,\,$(dir $@))
 else
 $(OBJ): .obj/linux%.o : src/%.c
-	mkdir -p .obj/linux
+	mkdir -p $(dir $@)
 endif
 	$(COMPILER) $(CFLAGS) -c $< -o $@
 

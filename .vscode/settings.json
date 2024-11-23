@@ -4,6 +4,7 @@
         "sdl.h": "c",
         "resources.h": "c",
         "game.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "cenario.h": "c"
     }
 }

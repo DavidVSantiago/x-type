@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include "game.h"
-#include "resources.h"
+#include "utils/resources.h"
 
 int main(int argc, char **argv) {
     if(SDL_Init(SDL_INIT_VIDEO) != 0) {printf("SDL_Init Error: %s\n",SDL_GetError());return 1;}

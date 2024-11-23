@@ -3,11 +3,23 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct {
+class Resources{
+private:
     SDL_Window *window;
-    SDL_Renderer *renderer;
+    SDL_Renderer *renderer
+    /* ATRIBUTOS PRIVADOS */
+
+    /* MÉTODOS PRIVADOS */
+public:
+    /* ATRIBUTOS PÚBLICOS */
     int LARGURA_TELA, ALTURA_TELA;
-    int error_status;
+   
+    /* MÉTODOS PÚBLICOS */
+}
+
+
+typedef struct {
+   
     
 } Resources;
 
