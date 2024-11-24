@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include "Resources.h"
+#include "scenes/SceneManager.h"
 
 class Engine
 {
@@ -9,7 +10,7 @@ protected:
     /* ATRIBUTOS PRIVADOS */
     Uint64 tempoAnterior, tempoAtual;
     Resources* res;
-    //SceneManager* sceneManager;
+    SceneManager* sceneManager;
 
     /* MÉTODOS PRIVADOS */
     void checkEvents();

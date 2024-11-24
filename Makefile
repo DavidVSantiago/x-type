@@ -11,7 +11,11 @@ SRC_C = \
 
 SRC_CPP = \
 	src/engine/Resources.cpp \
+	src/engine/scenes/Scene.cpp \
+	src/engine/scenes/SimpleScene.cpp \
+	src/engine/scenes/SceneManager.cpp \
 	src/engine/Engine.cpp \
+	src/cenario.cpp \
 	src/game.cpp \
 	src/main.cpp
 

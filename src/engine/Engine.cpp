@@ -16,8 +16,8 @@ Engine::Engine(int width, int height)
     this->res->init(width, height);
 
     // inicializa o SceneManager
-    // this->sceneManager = SceneManager::getInstance();
-    // this->sceneManager->init();
+    this->sceneManager = SceneManager::getInstance();
+    this->sceneManager->init();
 }
 
 Engine::~Engine()
@@ -41,9 +41,9 @@ void Engine::update(){
 }
 
 void Engine::render(){
-    SDL_RenderClear(this->res->renderer);
-    //this->sceneManager->render();
-    SDL_RenderPresent(this->res->renderer);
+    // SDL_RenderClear(this->res->renderer);
+    // //this->sceneManager->render();
+    // SDL_RenderPresent(this->res->renderer);
 }
 
 void Engine::gameloop()

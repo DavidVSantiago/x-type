@@ -25,4 +25,5 @@ public:
     static Resources* getInstance();
     void init(int width, int height);
     Uint64 getTimeTick();
+    SDL_Texture* loadImage(std::string fileName); // TODO implementar
 };

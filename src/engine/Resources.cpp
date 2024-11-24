@@ -10,16 +10,14 @@ std::string Resources::PATH_IMGS_ASSETS = "src/assets/imgs/";
 // MÉTODOS
 //---------------------------------------------------------------------------------------------------------
 
-Resources* Resources::getInstance()
-{
+Resources* Resources::getInstance(){
     if (instance == nullptr) {
         instance = new Resources;
     }
     return instance;
 }
 
-void Resources::init(int width, int height)
-{
+void Resources::init(int width, int height){
     vk_up = vk_down = vk_left = vk_right = false;
     screenWidth = width;
     screenHeigth = height;
@@ -28,7 +26,26 @@ void Resources::init(int width, int height)
     renderer = SDL_CreateRenderer(window, -1, 0);
 }
 
-Uint64 Resources::getTimeTick()
-{
-    return SDL_GetPerformanceCounter();
+Uint64 Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
+
+SDL_Texture* loadImage(std::string fileName){
+    // TODO implementar aqui a lógica de carregar a textura usando a biblioteca
+
+    std::string source = Resources::PATH_IMGS_ASSETS+fileSource;
+    // The final texture
+    SDL_Texture *newTexture = NULL;
+    // Load image at specified path
+    SDL_Surface *loadedSurface = IMG_Load(source.c_str());
+    if (loadedSurface == NULL) {
+        printf("Unable to load image %s! SDL_image Error: %s\n", source.c_str(), IMG_GetError());
+    } else {
+        // Create texture from surface pixels
+        newTexture = SDL_CreateTextureFromSurface(res->renderer, loadedSurface);
+        if (newTexture == NULL) {
+            printf("Unable to create texture from %s! SDL Error: %s\n", source.c_str(), SDL_GetError());
+        }
+        // Get rid of old loaded surface
+        SDL_FreeSurface(loadedSurface);
+    }
+    return newTexture;
 }

@@ -7,4 +7,9 @@ public:
     /* CONSTRUTORES E DESTRUTORES */
     Game(int width, int height);
     ~Game();
+
+     /* MÉTODOS DO GAMELOOP SOBRESCRITOS */
+    void handleEvents();
+    void update();
+    void render();
 };

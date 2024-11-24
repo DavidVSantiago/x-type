@@ -3,6 +3,6 @@
 #include "game.h"
 
 int main(int argc, char **argv) {
-    Game* engine = new Game(800,600);
+    new Game(800,600);
     return 0;
 }
