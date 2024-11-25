@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include "Resources.h"
 #include "scenes/SceneManager.h"
+#include "scenes/Scene.h"
 
 class Engine
 {
@@ -11,6 +12,7 @@ protected:
     Uint64 tempoAnterior, tempoAtual;
     Resources* res;
     SceneManager* sceneManager;
+    Scene* actualScene;
     Uint32 frameDelay;
 
     /* MÉTODOS PRIVADOS */
@@ -28,9 +30,12 @@ public:
     /* MÉTODOS DO GAMELOOP */
     virtual void handleEvents();
     virtual void update();
-    virtual void render();
+    void render();
     void gameloop();
 
     /* MÉTODOS */
     void checkSDLEvents();
+    void setActualScene(Scene* scene){
+        this->actualScene = scene;
+    }
 };

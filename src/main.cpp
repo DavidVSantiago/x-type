@@ -3,6 +3,6 @@
 #include "game.h"
 
 int main(int argc, char **argv) {
-    new Game(800,600);
+    new Game(640,480);
     return 0;
 }

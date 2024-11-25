@@ -2,13 +2,21 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include "utils/libs/lodepng.h"
+#include "utils/image/BufferedImage.h"
+
+using namespace std;
 
 class Resources
 {
 private:
-    /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     static Resources* instance; // singleton
+    /** lista que armazenará todas as imagem do jogo carregadas em memória
+        a cada imagem estará associada uma chave string */
+    unordered_map<string, BufferedImage*> imagesMap; 
+
+    /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     Resources(){}
     ~Resources(){}
 public:
@@ -21,11 +29,12 @@ public:
     SDL_Renderer* renderer;
     
     /* CONSTANTES ESTÁTICAS */
-    static std::string PATH_IMGS_ASSETS;
+    static string PATH_IMGS_ASSETS;
 
     /* MÉTODOS */
     static Resources* getInstance();
     void init(int width, int height);
     Uint64 getTimeTick();
-    SDL_Texture* loadImage(std::string fileName); // TODO implementar
+    bool loadImage(string fileName, string fileExt);
+    BufferedImage* getImage(string imageName); // obtém a ref de uma imagem específico
 };

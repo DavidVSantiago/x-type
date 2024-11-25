@@ -10,11 +10,14 @@ endif
 SRC_C = \
 
 SRC_CPP = \
-	src/engine/utils/libs/lodepng.cpp \
-	src/engine/Resources.cpp \
 	src/engine/scenes/Scene.cpp \
-	src/engine/scenes/SimpleScene.cpp \
+	src/engine/scenes/SceneLayer.cpp \
 	src/engine/scenes/SceneManager.cpp \
+	src/engine/scenes/types/SimpleScene.cpp \
+	src/engine/sprites/Sprite.cpp \
+	src/engine/utils/libs/lodepng.cpp \
+	src/engine/utils/image/BufferedImage.cpp \
+	src/engine/Resources.cpp \
 	src/engine/Engine.cpp \
 	src/cenario.cpp \
 	src/game.cpp \

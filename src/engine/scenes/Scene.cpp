@@ -8,3 +8,22 @@ Scene::Scene(std::string name){
     this->res = Resources::getInstance();
 }
 Scene::~Scene(){}
+
+/* MÉTODOS DO GAMELOOP */
+void Scene::render(){
+    for(int i=0;i<layersList.size();i++){
+        layersList.at(i)->render();
+    }
+}
+
+void Scene::addLayer(vector<Sprite*> spriteList){
+    SceneLayer* layer = new SceneLayer();
+    for(int i=0;i<spriteList.size();i++){
+        layer->addSprite(spriteList.at(i)); // adiciona cada sprite ao novo layer
+    }
+    layersList.push_back(layer); // adiciona o novo layer (com seus sprites) à lista de layers
+}
+
+SceneLayer* Scene::getLayer(int index){
+    return layersList.at(index);
+}

@@ -4,7 +4,7 @@
 // DEFINIÇÃO DOS ATRIBUTOS ESTÁTICOS
 //---------------------------------------------------------------------------------------------------------
 Resources *Resources::instance = nullptr; // inicialização da instância (específico do C++)
-std::string Resources::PATH_IMGS_ASSETS = "src/assets/imgs/";
+string Resources::PATH_IMGS_ASSETS = "src/assets/imgs/";
 
 //---------------------------------------------------------------------------------------------------------
 // MÉTODOS
@@ -28,14 +28,13 @@ void Resources::init(int width, int height){
 
 Uint64 Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
 
-SDL_Texture* Resources::loadImage(std::string fileName){
-    // TODO implementar aqui a lógica de carregar a textura usando a biblioteca
+bool Resources::loadImage(string fileName, string fileExt){
 
-    std::string source = Resources::PATH_IMGS_ASSETS + fileName; // prepara a string de consulta no arquivo
-    SDL_Texture* newTexture = nullptr; // objeto a ser retornado com a imagem em memória
-    
+    string source = Resources::PATH_IMGS_ASSETS + fileName + fileExt; // prepara a string de consulta no arquivo
+    SDL_Texture* newTexture = nullptr; // textura a ser colocada dentro da imagem
+
     // vetor para armazenar os dados brutos do pixel
-    std::vector<unsigned char> imageData;
+    vector<unsigned char> imageData;
     unsigned width, height;
 
     // faz uso da biblioteca para carregar o png
@@ -43,7 +42,7 @@ SDL_Texture* Resources::loadImage(std::string fileName){
 
     if(error){ // caso haja erro, imprime e retorna null
         printf("Erro ao carregar a imagem PNG %s: %s\n",source.c_str(),lodepng_error_text(error));
-        return nullptr;
+        return false;
     }
 
     // uma vez que não houve erro, pode-se converter os dados para SDL_Surface
@@ -58,7 +57,7 @@ SDL_Texture* Resources::loadImage(std::string fileName){
 
     if (!surface) {
         printf("Erro ao criar SDL_Surface: %s\n", SDL_GetError());
-        return nullptr;
+        return false;
     }
 
     // após carregar o SDL_Surface, podemos convertê-lo para SDL_Texture
@@ -68,5 +67,16 @@ SDL_Texture* Resources::loadImage(std::string fileName){
     }
     SDL_FreeSurface(surface); // limpa memória para o surface
 
-    return newTexture; // retorna a imagem pronta
+    // cria o objeto BufferedImage para ser retornado
+    BufferedImage* image = new BufferedImage(newTexture, width, height);
+
+    this->imagesMap[fileName] = image; // adiciona a imagem no mapa
+    return true; // indica o sucesso da operação
+}
+
+BufferedImage* Resources::getImage(string imageName){
+    if (this->imagesMap.find(imageName) != this->imagesMap.end())
+        return this->imagesMap[imageName];
+    printf("imagem não encontrada para a chave %s!\n",imageName);
+    return nullptr;
 }

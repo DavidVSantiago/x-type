@@ -1,7 +1,9 @@
 #pragma once
 #include <SDL2/SDL.h>
-#include "Scene.h"
+#include "../Scene.h"
+#include "../../sprites/Sprite.h"
 
+using namespace std;
 
 class SceneLayer; // declaração antecipada
 
@@ -10,7 +12,7 @@ class SceneLayer; // declaração antecipada
 /***********************************************************************************/
 class SimpleScene : public Scene {    
 public:
-    // Sprite* sprite;
+    /* ATRIBUTOS */
 
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     SimpleScene(std::string name);
@@ -18,11 +20,11 @@ public:
     
     /* MÉTODOS */
     // void registrarSprite(Sprite* sprite);
-
+    
     /* MÉTODOS DO GAMELOOP */
-    void render() override;
-    void handleEvents() override;
-    void update() override;
+    virtual void handleEvents();
+    virtual void update();
+    virtual void render();
 };
 
 /***********************************************************************************/

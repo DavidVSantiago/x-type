@@ -55,7 +55,7 @@ void Engine::update(){
 
 void Engine::render(){
     SDL_RenderClear(this->res->renderer);
-    this->render(); // versão sobrescrita pelo cliente
+    this->actualScene->render();
     SDL_RenderPresent(this->res->renderer);
 }
 

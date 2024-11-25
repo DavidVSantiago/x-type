@@ -60,6 +60,9 @@
         "scenemanager.h": "c",
         "scene.h": "c",
         "simplescene.h": "c",
-        "lodepng.h": "c"
+        "lodepng.h": "c",
+        "bufferedimage.h": "c",
+        "sprite.h": "c",
+        "scenelayer.h": "c"
     }
 }
