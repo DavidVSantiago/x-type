@@ -10,6 +10,8 @@ Engine::Engine(int width, int height)
     // inicializa o SDL
     SDL_Init(SDL_INIT_EVERYTHING);
     this->isRunning = true;
+    
+    this->frameDelay=16; // para 60FPS
 
     // inicializa o Resources
     this->res = Resources::getInstance();
@@ -48,7 +50,7 @@ void Engine::render(){
 
 void Engine::gameloop()
 {
-    while (isRunning)
+    while (this->isRunning)
     {
         this->tempoAtual = this->res->getTimeTick();
         this->res->deltaTime = (this->tempoAtual - this->tempoAnterior);
@@ -58,6 +60,8 @@ void Engine::gameloop()
         this->render();
 
         this->tempoAnterior = this->tempoAtual; // atualiza o tempo anterior (para o próximo quadro)
+        
+        SDL_Delay(this->frameDelay); // Pausa pelo tempo restante
     }
     SDL_DestroyRenderer(this->res->renderer);
     SDL_DestroyWindow(this->res->window);

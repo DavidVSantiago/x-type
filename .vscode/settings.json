@@ -59,6 +59,7 @@
         "variant": "cpp",
         "scenemanager.h": "c",
         "scene.h": "c",
-        "simplescene.h": "c"
+        "simplescene.h": "c",
+        "lodepng.h": "c"
     }
 }

@@ -10,6 +10,7 @@ endif
 SRC_C = \
 
 SRC_CPP = \
+	src/engine/utils/libs/lodepng.cpp \
 	src/engine/Resources.cpp \
 	src/engine/scenes/Scene.cpp \
 	src/engine/scenes/SimpleScene.cpp \

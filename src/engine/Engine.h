@@ -11,6 +11,7 @@ protected:
     Uint64 tempoAnterior, tempoAtual;
     Resources* res;
     SceneManager* sceneManager;
+    Uint32 frameDelay;
 
     /* MÉTODOS PRIVADOS */
     void checkEvents();
@@ -25,8 +26,8 @@ public:
     ~Engine();
 
     /* MÉTODOS DO GAMELOOP */
-    void handleEvents();
-    void update();
-    void render();
+    virtual void handleEvents();
+    virtual void update();
+    virtual void render();
     void gameloop();
 };

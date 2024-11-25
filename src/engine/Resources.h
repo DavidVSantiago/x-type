@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <string>
+#include <vector>
+#include "utils/libs/lodepng.h"
 
 class Resources
 {
@@ -15,8 +17,8 @@ public:
     float deltaTime;
     bool vk_up,vk_down,vk_left,vk_right;
     int screenWidth,screenHeigth;
-    SDL_Window *window;
-    SDL_Renderer *renderer;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
     
     /* CONSTANTES ESTÁTICAS */
     static std::string PATH_IMGS_ASSETS;

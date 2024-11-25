@@ -7,6 +7,7 @@ public:
     /* CONSTRUTORES E DESTRUTORES */
     Game(int width, int height);
     ~Game();
+    SDL_Texture* testeImg;
 
      /* MÉTODOS DO GAMELOOP SOBRESCRITOS */
     void handleEvents();
