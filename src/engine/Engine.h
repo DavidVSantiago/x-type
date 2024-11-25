@@ -30,4 +30,7 @@ public:
     virtual void update();
     virtual void render();
     void gameloop();
+
+    /* MÉTODOS */
+    void checkSDLEvents();
 };

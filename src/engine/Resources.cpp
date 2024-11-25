@@ -22,8 +22,8 @@ void Resources::init(int width, int height){
     screenWidth = width;
     screenHeigth = height;
     deltaTime = 0;
-    window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    window = nullptr;
+    renderer = nullptr;
 }
 
 Uint64 Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
