@@ -8,9 +8,11 @@ Sprite::Sprite(BufferedImage* image) {
     // define o Rect de origem para recorte do sprite
     rectOrig.w=image->width;
     rectOrig.h=image->heigth;
+    rectOrig.x=rectOrig.y=0.0;
     // define o Rect de destino para desenhar o sprite na tela
     rectDest.w=image->width;
     rectDest.h=image->heigth;
+    rectDest.x=rectDest.y=0.0;
     // ajusta as variáveis de posição e velocidade
     posX = 0.0;
     posY = 0.0;

@@ -24,3 +24,12 @@ Cenario::Cenario(string name):SimpleScene(name){
     addLayer(listaSprites);
 }
 Cenario::~Cenario(){}
+
+
+/* MÉTODOS */
+void Cenario::handleEvents(){
+
+}
+void Cenario::update(){
+    
+}

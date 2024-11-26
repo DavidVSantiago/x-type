@@ -17,13 +17,13 @@ protected:
     vector<SceneLayer*> layersList;
 
 public:
-    /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
+    /* CONSTRUTORES E DESTRUTORES*/
     Scene(std::string name);
-    ~Scene();
+    virtual ~Scene();
 
     /* MÉTODOS DO GAMELOOP */
-    virtual void handleEvents();
-    virtual void update();
+    virtual void handleEvents()=0; // pure virtual (sem implementação aqui. deve ser implementada na derivada)
+    virtual void update()=0; // pure virtual (sem implementação aqui. deve ser implementada na derivada)
     virtual void render();
 
     /* MÉTODOS */

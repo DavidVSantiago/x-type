@@ -19,7 +19,6 @@ public:
     /* MÉTODOS PÚBLICOS */
     
     /* MÉTODOS DO GAMELOOP */
-    void handleEvents();
-    void update();
-    void render() override;
+    void handleEvents() override;
+    void update() override;
 };

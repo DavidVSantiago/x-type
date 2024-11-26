@@ -10,7 +10,3 @@ Game::Game(int width, int height):Engine(width,height){
     gameloop(); // dispara o gameloop
 }
 Game::~Game(){}
-
-void Game::handleEvents(){
-
-}

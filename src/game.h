@@ -11,6 +11,4 @@ public:
     
 
      /* MÉTODOS DO GAMELOOP SOBRESCRITOS */
-    void handleEvents();
-    void update();
 };

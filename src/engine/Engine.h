@@ -28,8 +28,8 @@ public:
     ~Engine();
 
     /* MÉTODOS DO GAMELOOP */
-    virtual void handleEvents();
-    virtual void update();
+    void handleEvents();
+    void update();
     void render();
     void gameloop();
 

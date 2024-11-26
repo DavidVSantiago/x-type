@@ -1,9 +1,14 @@
 #include "SceneLayer.h"
 
+SceneLayer::SceneLayer(){
+    res = Resources::getInstance();
+    posX = posY=0.0;
+}
+SceneLayer::~SceneLayer(){}
 
 /* MÉTODOS DO GAMELOOP */
 void SceneLayer::render(){
-    for(int i=0;i<spriteList.size();i++){
+    for(size_t i=0;i<spriteList.size();i++){
         spriteList.at(i)->render();
     }
 }

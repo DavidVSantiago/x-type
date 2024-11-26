@@ -47,7 +47,7 @@ endif
 # LDFLAGS é a variável para as flsags de linkagem
 ifeq ($(OS),Windows_NT)
 	LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mwindows
-#LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mwindows -static -lwinmm -loleaut32 -lSetupapi -lImm32 -lVersion -lOle32 -static-libgcc -static-libstdc++
+# LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mwindows -static -lwinmm -loleaut32 -lSetupapi -lImm32 -lVersion -lOle32 -static-libgcc -static-libstdc++
 else
 	LDFLAGS := -Llib/linux/lib -lSDL2main -lSDL2 -Wl,-rpath,lib/linux/lib -Wl,--enable-new-dtags -Wl,-Bstatic -Wl,-Bdynamic -lm -ldl -lpthread -lrt
 #LDFLAGS := -Llib/linux/lib -lSDL2main -lSDL2

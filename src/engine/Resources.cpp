@@ -77,6 +77,6 @@ bool Resources::loadImage(string fileName, string fileExt){
 BufferedImage* Resources::getImage(string imageName){
     if (this->imagesMap.find(imageName) != this->imagesMap.end())
         return this->imagesMap[imageName];
-    printf("imagem não encontrada para a chave %s!\n",imageName);
+    printf("imagem não encontrada para a chave %s!\n",imageName.c_str());
     return nullptr;
 }

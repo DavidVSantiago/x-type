@@ -22,9 +22,9 @@ public:
     // void registrarSprite(Sprite* sprite);
     
     /* MÉTODOS DO GAMELOOP */
-    virtual void handleEvents();
-    virtual void update();
-    virtual void render();
+    // void handleEvents() override;
+    // void update() override;
+    // void render() override;
 };
 
 /***********************************************************************************/

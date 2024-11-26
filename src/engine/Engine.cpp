@@ -46,11 +46,11 @@ void Engine::handleEvents(){
             case SDL_KEYDOWN: if (event.key.keysym.sym == SDLK_ESCAPE)isRunning = false;
         }
     }
-    this->handleEvents(); // versão sobrescrita pelo cliente
+    this->actualScene->handleEvents(); // versão sobrescrita pelo cenário do cliente
 }
 
 void Engine::update(){
-    this->update(); // versão sobrescrita pelo cliente
+    this->actualScene->update();
 }
 
 void Engine::render(){
