@@ -1,0 +1,106 @@
+<Project>
+  <Name>ALGOL_ENGINE</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Diagrama de classes</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Resources</Name>
+        <Access>Public</Access>
+        <Location left="400" top="288" />
+        <Size width="309" height="400" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static Resources instance</Member>
+        <Member type="Field">private unordered_map&lt;string, BufferedImage&gt; imagesMap</Member>
+        <Member type="Field">public float deltaTime</Member>
+        <Member type="Field">public bool vk_up</Member>
+        <Member type="Field">public bool vk_down</Member>
+        <Member type="Field">public bool vk_left</Member>
+        <Member type="Field">public bool vk_right</Member>
+        <Member type="Field">public int screenWidth</Member>
+        <Member type="Field">public int screenHeight</Member>
+        <Member type="Field">public SDL_Window window</Member>
+        <Member type="Field">public SDL_Renderer renderer</Member>
+        <Member type="Field">public string PATH_IMGS_ASSETS</Member>
+        <Member type="Constructor">private Resources()</Member>
+        <Member type="Destructor">~Resources()</Member>
+        <Member type="Method">public static Resources getInstance()</Member>
+        <Member type="Method">public void init(int width, int height)</Member>
+        <Member type="Method">public uint64_t getTimeTick()</Member>
+        <Member type="Method">public bool loadImage(string fileName, string fileExt)</Member>
+        <Member type="Method">public BufferedImage getImage(string imageName)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BufferedImage</Name>
+        <Access>Public</Access>
+        <Location left="169" top="42" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public SDL_Texture texture</Member>
+        <Member type="Field">public int width</Member>
+        <Member type="Field">public int height</Member>
+        <Member type="Constructor">public BufferedImage(SDL_Texture texture, int width, int height)</Member>
+        <Member type="Destructor">~BufferedImage()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sprite</Name>
+        <Access>Public</Access>
+        <Location left="1046" top="288" />
+        <Size width="200" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public BufferedImage image</Member>
+        <Member type="Field">public float posX</Member>
+        <Member type="Field">public float posY</Member>
+        <Member type="Field">public float speedX</Member>
+        <Member type="Field">public float speedY</Member>
+        <Member type="Field">public Resources res</Member>
+        <Member type="Constructor">public Sprite(BufferedImage image)</Member>
+        <Member type="Destructor">~Sprite()</Member>
+        <Member type="Method">public abstract SDL_Rect getFrame()</Member>
+        <Member type="Method">public abstract SDL_Rect getRectDest()</Member>
+        <Member type="Method">public void render()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SimpleSprite</Name>
+        <Access>Public</Access>
+        <Location left="865" top="671" />
+        <Size width="214" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public SDL_Rect rectOrig</Member>
+        <Member type="Field">public SDL_Rect rectDest</Member>
+        <Member type="Constructor">public SimpleSprite(BufferedImage image)</Member>
+        <Member type="Destructor">~SimpleSprite()</Member>
+        <Member type="Method">public SDL_Rect getFrame()</Member>
+        <Member type="Method">public SDL_Rect getRectDest()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MultiSimpleSprite</Name>
+        <Access>Public</Access>
+        <Location left="1172" top="671" />
+        <Size width="394" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public vector&lt;SDL_Rect&gt; rectOrigList</Member>
+        <Member type="Field">public SDL_Rect rectDest</Member>
+        <Member type="Constructor">public MultiSimpleSprite(BufferedImage image, uint8_t lines, uint8_t cols)</Member>
+        <Member type="Destructor">~MultiSimpleSprite()</Member>
+        <Member type="Method">public SDL_Rect getFrame()</Member>
+        <Member type="Method">public SDL_Rect getRectDest()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

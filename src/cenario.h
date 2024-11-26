@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include "engine/scenes/types/SimpleScene.h"
+#include "engine/sprites/types/SimpleSprite.h"
+#include "engine/sprites/types/MultiSimpleSprite.h"
 
 using namespace std;
 

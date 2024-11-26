@@ -63,6 +63,7 @@
         "lodepng.h": "c",
         "bufferedimage.h": "c",
         "sprite.h": "c",
-        "scenelayer.h": "c"
+        "scenelayer.h": "c",
+        "simplesprite.h": "c"
     }
 }

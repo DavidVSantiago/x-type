@@ -1,15 +1,13 @@
 #include "Resources.h"
 
 //---------------------------------------------------------------------------------------------------------
-// DEFINIÇÃO DOS ATRIBUTOS ESTÁTICOS
+// ATRIBUTOS privados
 //---------------------------------------------------------------------------------------------------------
 Resources *Resources::instance = nullptr; // inicialização da instância (específico do C++)
-string Resources::PATH_IMGS_ASSETS = "src/assets/imgs/";
 
 //---------------------------------------------------------------------------------------------------------
 // MÉTODOS
 //---------------------------------------------------------------------------------------------------------
-
 Resources* Resources::getInstance(){
     if (instance == nullptr) {
         instance = new Resources;
@@ -20,17 +18,18 @@ Resources* Resources::getInstance(){
 void Resources::init(int width, int height){
     vk_up = vk_down = vk_left = vk_right = false;
     screenWidth = width;
-    screenHeigth = height;
+    screenHeight = height;
     deltaTime = 0;
     window = nullptr;
     renderer = nullptr;
+    PATH_IMGS_ASSETS = "src/assets/imgs/";
 }
 
-Uint64 Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
+uint64_t Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
 
 bool Resources::loadImage(string fileName, string fileExt){
 
-    string source = Resources::PATH_IMGS_ASSETS + fileName + fileExt; // prepara a string de consulta no arquivo
+    string source = PATH_IMGS_ASSETS + fileName + fileExt; // prepara a string de consulta no arquivo
     SDL_Texture* newTexture = nullptr; // textura a ser colocada dentro da imagem
 
     // vetor para armazenar os dados brutos do pixel

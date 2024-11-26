@@ -3,11 +3,11 @@
 
 class BufferedImage{
 public:
-    /* ATRIBUTOS ------------------------------------------------------------------*/
+    /* ATRIBUTOS -------------------------------------------------------*/
     SDL_Texture* texture; // referência ao sprite na memória que será desenhado
-    int width, heigth; // dimensões da imagem
+    int width, height; // dimensões da imagem
 
-    /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
-    BufferedImage(SDL_Texture* texture, int width, int heigth);
+    /* CONSTRUTORES E DESTRUTORES --------------------------------------*/
+    BufferedImage(SDL_Texture* texture, int width, int height);
     ~BufferedImage();
 };

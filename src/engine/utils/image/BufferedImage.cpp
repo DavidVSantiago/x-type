@@ -1,8 +1,11 @@
 #include "BufferedImage.h"
 
-BufferedImage::BufferedImage(SDL_Texture* texture, int width, int heigth){
+//---------------------------------------------------------------------------------------------------------
+// CONSTRUTORES E DESTRUTORES
+//---------------------------------------------------------------------------------------------------------
+BufferedImage::BufferedImage(SDL_Texture* texture, int width, int height){
     this->texture = texture;
     this->width=width;
-    this->heigth=heigth;
+    this->height=height;
 }
 BufferedImage::~BufferedImage(){}

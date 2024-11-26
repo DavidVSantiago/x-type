@@ -11,8 +11,7 @@ using namespace std;
 class Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
-    BufferedImage* image;
-    SDL_Rect rectOrig,rectDest;
+    BufferedImage* image; // imagem do sprite
     float posX, posY;
     float speedX;
     float speedY;
@@ -23,8 +22,8 @@ public:
     ~Sprite();
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
-    SDL_Rect* getRectOrig(); // Retorna a informação do Frame do sprite a ser desenhado
-    SDL_Rect* getRectDest(); // Retorna a informação da destino de desenho na tela
+    virtual SDL_Rect* getFrame()=0; // Retorna a informação do Frame do sprite a ser desenhado
+    virtual SDL_Rect* getRectDest()=0; // Retorna a informação da destino de desenho na tela
 
     /* MÉTODOS DO GAMELOOP --------------------------------------------------------*/
     void render();

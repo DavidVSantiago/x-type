@@ -15,6 +15,8 @@ SRC_CPP = \
 	src/engine/scenes/SceneManager.cpp \
 	src/engine/scenes/types/SimpleScene.cpp \
 	src/engine/sprites/Sprite.cpp \
+	src/engine/sprites/types/SimpleSprite.cpp \
+	src/engine/sprites/types/MultiSimpleSprite.cpp \
 	src/engine/utils/libs/lodepng.cpp \
 	src/engine/utils/image/BufferedImage.cpp \
 	src/engine/Resources.cpp \
