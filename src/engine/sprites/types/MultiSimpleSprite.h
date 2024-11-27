@@ -14,9 +14,8 @@ using namespace std;
 class MultiSimpleSprite: public Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
-    // possui uma lista de RectOrig, pois precisa armazenar um rect para cada quadro
-    vector<SDL_Rect*> rectOrigList;
     uint16_t frameIndex; // indice do quadro a ser renderizado
+    uint16_t frameMatrixColumns; // quantidade de quadros na matriz
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     // recebe a ref da imagem do sprite, junto com as quantidades de linhas e colunas do sprite

@@ -64,6 +64,8 @@
         "bufferedimage.h": "c",
         "sprite.h": "c",
         "scenelayer.h": "c",
-        "simplesprite.h": "c"
+        "simplesprite.h": "c",
+        "animatedsprite.h": "c",
+        "multisimplesprite.h": "c"
     }
 }

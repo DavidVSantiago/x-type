@@ -25,7 +25,7 @@ void AnimatedSprite::changeFrame(){
     if(accTime>=frameTime){ // se o tempo acumulado do quadro alcançou o seu limite
         accTime=0.0f;
         frameIndex++; // pula para o próximo quadro da animação
-        if(frameIndex==rectOrigList.size()) frameIndex=0;// verifica se ultrapassou o ultimo quadro e o reinicia caso positivo  
+        if(frameIndex==rectOrigMatrixSize) frameIndex=0;// verifica se ultrapassou o ultimo quadro e o reinicia caso positivo  
     }
 }
 

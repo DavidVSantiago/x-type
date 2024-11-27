@@ -16,5 +16,5 @@ public:
     virtual ~SimpleSprite();
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
-    SDL_Rect* getFrame() override; // Retorna a informação do Frame do sprite a ser desenhado
+    SDL_Rect* getFrame() override; // Retorna a informação do Quadro único do sprite a ser desenhado
 };
