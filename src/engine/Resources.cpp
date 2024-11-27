@@ -26,6 +26,7 @@ void Resources::init(int width, int height){
 }
 
 uint64_t Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
+uint64_t Resources::getTimeTickFrequency(){return SDL_GetPerformanceFrequency();}
 
 bool Resources::loadImage(string fileName, string fileExt){
 

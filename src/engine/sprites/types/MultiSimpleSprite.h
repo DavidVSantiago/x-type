@@ -16,7 +16,7 @@ public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     // possui uma lista de RectOrig, pois precisa armazenar um rect para cada quadro
     vector<SDL_Rect*> rectOrigList;
-    SDL_Rect rectDest; // o rect de destino permanece apenas um, pois todos os quadros são desenhados com base em posX e posY 
+    uint16_t frameIndex; // indice do quadro a ser renderizado
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     // recebe a ref da imagem do sprite, junto com as quantidades de linhas e colunas do sprite
@@ -26,5 +26,4 @@ public:
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
     SDL_Rect* getFrame() override; // Retorna a informação do Frame do sprite a ser desenhado
-    SDL_Rect* getRectDest() override; // Retorna a informação da destino de desenho na tela
 };

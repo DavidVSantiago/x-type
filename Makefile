@@ -17,6 +17,7 @@ SRC_CPP = \
 	src/engine/sprites/Sprite.cpp \
 	src/engine/sprites/types/SimpleSprite.cpp \
 	src/engine/sprites/types/MultiSimpleSprite.cpp \
+	src/engine/sprites/types/AnimatedSprite.cpp \
 	src/engine/utils/libs/lodepng.cpp \
 	src/engine/utils/image/BufferedImage.cpp \
 	src/engine/Resources.cpp \
@@ -48,7 +49,7 @@ endif
 
 # LDFLAGS é a variável para as flsags de linkagem
 ifeq ($(OS),Windows_NT)
-	LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mwindows
+	LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mconsole
 # LDFLAGS := -Llib/windows/lib -lmingw32 -lSDL2main -lSDL2 -mwindows -static -lwinmm -loleaut32 -lSetupapi -lImm32 -lVersion -lOle32 -static-libgcc -static-libstdc++
 else
 	LDFLAGS := -Llib/linux/lib -lSDL2main -lSDL2 -Wl,-rpath,lib/linux/lib -Wl,--enable-new-dtags -Wl,-Bstatic -Wl,-Bdynamic -lm -ldl -lpthread -lrt

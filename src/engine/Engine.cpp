@@ -6,12 +6,15 @@
 /*****************************************************************************/
 
 Engine::Engine(int width, int height){
-    this->frameDelay=16; // para 60FPS
 
     // inicializa o Resources
     this->res = Resources::getInstance();
     this->res->init(width, height);
     this->isRunning = true;
+
+    // inicializa as variável de tempo do gameloop
+    this->frameDelay=16; // 16ms para 60FPS
+    this->startFrameTime = this->oldFrameTime = this->res->getTimeTick();
 
     // inicializa o SDL ---------------
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 ){
@@ -31,8 +34,7 @@ Engine::Engine(int width, int height){
     }
 }
 
-Engine::~Engine()
-{
+Engine::~Engine(){
 }
 
 /*****************************************************************************/
@@ -43,7 +45,10 @@ void Engine::handleEvents(){
     while (SDL_PollEvent(&event)){
         switch (event.type){
             case SDL_QUIT: isRunning = false; break;
-            case SDL_KEYDOWN: if (event.key.keysym.sym == SDLK_ESCAPE)isRunning = false;
+            case SDL_KEYDOWN: if (event.key.keysym.sym == SDLK_ESCAPE)isRunning = false; break;
+            case SDL_WINDOWEVENT:
+                this->oldFrameTime=this->res->getTimeTick();
+            break;
         }
     }
     this->actualScene->handleEvents(); // versão sobrescrita pelo cenário do cliente
@@ -59,20 +64,20 @@ void Engine::render(){
     SDL_RenderPresent(this->res->renderer);
 }
 
-void Engine::gameloop()
-{
-    while (this->isRunning)
-    {
-        this->tempoAtual = this->res->getTimeTick();
-        this->res->deltaTime = (this->tempoAtual - this->tempoAnterior);
+void Engine::gameloop(){
+    while (this->isRunning){
+        this->startFrameTime = this->res->getTimeTick(); // amostra de tempo INICIAL do quadro
+        this->res->deltaTime = (this->startFrameTime - this->oldFrameTime)/(float)this->res->getTimeTickFrequency();
+        this->oldFrameTime = this->startFrameTime; // atualiza o tempo anterior (para o próximo quadro)
 
         Engine::handleEvents();
         Engine::update();
         Engine::render();
-
-        this->tempoAnterior = this->tempoAtual; // atualiza o tempo anterior (para o próximo quadro)
         
-        SDL_Delay(this->frameDelay); // Pausa pelo tempo restante
+        this->endFrameTime = this->res->getTimeTick(); // amostra de tempo FINAL do quadro
+        this->diffTime=((this->endFrameTime-this->startFrameTime)*1000)/this->res->getTimeTickFrequency();
+        // printf("DeltaTime: %f\n",this->res->deltaTime);
+        if(this->diffTime < this->frameDelay) SDL_Delay(this->frameDelay - this->diffTime); // Pausa pelo tempo restante
     }
     SDL_DestroyRenderer(this->res->renderer);
     SDL_DestroyWindow(this->res->window);

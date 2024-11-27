@@ -8,7 +8,7 @@
         <Name>Resources</Name>
         <Access>Public</Access>
         <Location left="400" top="288" />
-        <Size width="309" height="400" />
+        <Size width="294" height="400" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static Resources instance</Member>
         <Member type="Field">private unordered_map&lt;string, BufferedImage&gt; imagesMap</Member>
@@ -34,8 +34,8 @@
       <Entity type="Class">
         <Name>BufferedImage</Name>
         <Access>Public</Access>
-        <Location left="169" top="42" />
-        <Size width="162" height="162" />
+        <Location left="56" top="43" />
+        <Size width="330" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public SDL_Texture texture</Member>
         <Member type="Field">public int width</Member>
@@ -47,7 +47,7 @@
       <Entity type="Class">
         <Name>Sprite</Name>
         <Access>Public</Access>
-        <Location left="1046" top="288" />
+        <Location left="1047" top="617" />
         <Size width="200" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public BufferedImage image</Member>
@@ -59,36 +59,35 @@
         <Member type="Constructor">public Sprite(BufferedImage image)</Member>
         <Member type="Destructor">~Sprite()</Member>
         <Member type="Method">public abstract SDL_Rect getFrame()</Member>
-        <Member type="Method">public abstract SDL_Rect getRectDest()</Member>
+        <Member type="Method">public SDL_Rect getRectDest()</Member>
         <Member type="Method">public void render()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>SimpleSprite</Name>
         <Access>Public</Access>
-        <Location left="865" top="671" />
-        <Size width="214" height="179" />
+        <Location left="868" top="973" />
+        <Size width="214" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public SDL_Rect rectOrig</Member>
         <Member type="Field">public SDL_Rect rectDest</Member>
         <Member type="Constructor">public SimpleSprite(BufferedImage image)</Member>
         <Member type="Destructor">~SimpleSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
-        <Member type="Method">public SDL_Rect getRectDest()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>MultiSimpleSprite</Name>
         <Access>Public</Access>
-        <Location left="1172" top="671" />
-        <Size width="394" height="179" />
+        <Location left="1175" top="973" />
+        <Size width="375" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public vector&lt;SDL_Rect&gt; rectOrigList</Member>
         <Member type="Field">public SDL_Rect rectDest</Member>
+        <Member type="Field">public uint16_t frameIndex</Member>
         <Member type="Constructor">public MultiSimpleSprite(BufferedImage image, uint8_t lines, uint8_t cols)</Member>
         <Member type="Destructor">~MultiSimpleSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
-        <Member type="Method">public SDL_Rect getRectDest()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -96,10 +95,18 @@
       <Relationship type="Generalization" first="3" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1123</X>
+          <Y>906</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="4" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1173</X>
+          <Y>906</Y>
+        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>

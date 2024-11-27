@@ -35,6 +35,7 @@ public:
     static Resources* getInstance();
     void init(int width, int height);
     uint64_t getTimeTick();
+    uint64_t getTimeTickFrequency();
     bool loadImage(string fileName, string fileExt);
     BufferedImage* getImage(string imageName); // obtém a ref de uma imagem específico
 };

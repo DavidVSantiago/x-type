@@ -28,6 +28,7 @@ MultiSimpleSprite::MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t
     rectDest.w=width;
     rectDest.h=height;
     rectDest.x=rectDest.y=0.0;
+    frameIndex = 0;
 }
 MultiSimpleSprite::~MultiSimpleSprite(){}
 
@@ -35,11 +36,6 @@ MultiSimpleSprite::~MultiSimpleSprite(){}
 // GETTERS & SETTERS
 //---------------------------------------------------------------------------------------------------------
 SDL_Rect* MultiSimpleSprite::getFrame(){
-    return rectOrigList.at(5); // TESTE
-}
-SDL_Rect* MultiSimpleSprite::getRectDest(){
-    rectDest.x=(int)posX;
-    rectDest.y=(int)posY;
-    return &rectDest;
+    return rectOrigList.at(frameIndex); // TESTE
 }
 

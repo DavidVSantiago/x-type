@@ -5,10 +5,8 @@
 
 using namespace std;
 
-class SceneLayer; // declaração antecipada
-
 /***********************************************************************************/
-/* CLASSE QUE REPRESENTA UMA CENA SIMPLES */
+/* CLASSE ABSTRATA QUE REPRESENTA UMA CENA SIMPLES */
 /***********************************************************************************/
 class SimpleScene : public Scene {    
 public:
@@ -19,12 +17,7 @@ public:
     ~SimpleScene();
     
     /* MÉTODOS */
-    // void registrarSprite(Sprite* sprite);
-    
-    /* MÉTODOS DO GAMELOOP */
-    // void handleEvents() override;
-    // void update() override;
-    // void render() override;
+    virtual void checkCollisions()=0;
 };
 
 /***********************************************************************************/

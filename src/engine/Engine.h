@@ -1,19 +1,19 @@
 #pragma once
-
 #include <SDL2/SDL.h>
 #include "Resources.h"
 #include "scenes/SceneManager.h"
 #include "scenes/Scene.h"
 
+using namespace std;
+
 class Engine
 {
 protected:
     /* ATRIBUTOS PRIVADOS */
-    Uint64 tempoAnterior, tempoAtual;
+    Uint64 startFrameTime, endFrameTime, oldFrameTime, diffTime, frameDelay;
     Resources* res;
     SceneManager* sceneManager;
     Scene* actualScene;
-    Uint32 frameDelay;
 
     /* MÉTODOS PRIVADOS */
     void checkEvents();

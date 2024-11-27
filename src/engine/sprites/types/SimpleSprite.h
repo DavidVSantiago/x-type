@@ -12,7 +12,7 @@ using namespace std;
 class SimpleSprite: public Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
-    SDL_Rect rectOrig,rectDest; // Rects de origem e destino para renderização
+    SDL_Rect rectOrig; // Rects de origem para renderização
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     SimpleSprite(BufferedImage* image); // recebe a ref da imagem do sprite
@@ -20,5 +20,4 @@ public:
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
     SDL_Rect* getFrame() override; // Retorna a informação do Frame do sprite a ser desenhado
-    SDL_Rect* getRectDest() override; // Retorna a informação da destino de desenho na tela
 };
