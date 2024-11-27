@@ -47,10 +47,11 @@
       <Entity type="Class">
         <Name>Sprite</Name>
         <Access>Public</Access>
-        <Location left="1047" top="617" />
-        <Size width="200" height="264" />
+        <Location left="1030" top="536" />
+        <Size width="200" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public BufferedImage image</Member>
+        <Member type="Field">public SDL_Rect rectDest</Member>
         <Member type="Field">public float posX</Member>
         <Member type="Field">public float posY</Member>
         <Member type="Field">public float speedX</Member>
@@ -61,6 +62,8 @@
         <Member type="Method">public abstract SDL_Rect getFrame()</Member>
         <Member type="Method">public SDL_Rect getRectDest()</Member>
         <Member type="Method">public void render()</Member>
+        <Member type="Method">public void move()</Member>
+        <Member type="Method">public void unmove()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
@@ -70,7 +73,6 @@
         <Size width="214" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public SDL_Rect rectOrig</Member>
-        <Member type="Field">public SDL_Rect rectDest</Member>
         <Member type="Constructor">public SimpleSprite(BufferedImage image)</Member>
         <Member type="Destructor">~SimpleSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
@@ -79,14 +81,26 @@
       <Entity type="Class">
         <Name>MultiSimpleSprite</Name>
         <Access>Public</Access>
-        <Location left="1175" top="973" />
-        <Size width="375" height="162" />
+        <Location left="1196" top="973" />
+        <Size width="368" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public vector&lt;SDL_Rect&gt; rectOrigList</Member>
-        <Member type="Field">public SDL_Rect rectDest</Member>
         <Member type="Field">public uint16_t frameIndex</Member>
         <Member type="Constructor">public MultiSimpleSprite(BufferedImage image, uint8_t lines, uint8_t cols)</Member>
         <Member type="Destructor">~MultiSimpleSprite()</Member>
+        <Member type="Method">public SDL_Rect getFrame()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AnimatedSprite</Name>
+        <Access>Public</Access>
+        <Location left="1196" top="1241" />
+        <Size width="368" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public vector&lt;SDL_Rect&gt; rectOrigList</Member>
+        <Member type="Field">public uint16_t frameIndex</Member>
+        <Member type="Constructor">public AnimatedSprite(BufferedImage image, uint8_t lines, uint8_t cols)</Member>
+        <Member type="Destructor">~AnimatedSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
         <Modifier>None</Modifier>
       </Entity>
@@ -96,17 +110,21 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>1123</X>
-          <Y>906</Y>
+          <X>1106</X>
+          <Y>876</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="4" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>1173</X>
-          <Y>906</Y>
+          <X>1156</X>
+          <Y>876</Y>
         </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
       </Relationship>
     </Relationships>
   </ProjectItem>
