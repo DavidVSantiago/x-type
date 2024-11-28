@@ -94,7 +94,7 @@
       <Entity type="Class">
         <Name>AnimatedSprite</Name>
         <Access>Public</Access>
-        <Location left="1196" top="1241" />
+        <Location left="1196" top="1243" />
         <Size width="368" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public float frameTime</Member>
@@ -103,6 +103,30 @@
         <Member type="Destructor">~AnimatedSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
         <Member type="Method">private void changeFrame()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SceneLayer</Name>
+        <Access>Public</Access>
+        <Location left="633" top="1571" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Scene</Name>
+        <Access>Public</Access>
+        <Location left="807" top="1404" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SimpleScene</Name>
+        <Access>Public</Access>
+        <Location left="933" top="1571" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -124,6 +148,21 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="7" second="6">
+        <Label>Possui um lista</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>848</X>
+          <Y>1508</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="7">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>

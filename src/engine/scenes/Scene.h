@@ -1,7 +1,7 @@
 #pragma once
-
 #include <SDL2/SDL.h>
 #include <string>
+#include <cstdint>
 #include "../Resources.h"
 #include "SceneLayer.h"
 
@@ -14,7 +14,9 @@ class Scene {
 protected:
     std::string name;
     Resources* res;
-    vector<SceneLayer*> layersList;
+    SceneLayer** layersList; // lista de layers da cena
+    uint8_t layersListCapacity; // capacidade máxima da lista de layers da cena (inicial = 5)
+    uint8_t layersListSize; // quantidade de layers atualmente na cena
 
 public:
     /* CONSTRUTORES E DESTRUTORES*/
