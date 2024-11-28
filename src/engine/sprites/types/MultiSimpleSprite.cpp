@@ -9,23 +9,20 @@ MultiSimpleSprite::MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t
     *  Por isso, os rects precisam ser definidos um a um.
     *  apesar da imagem ser recebida em matriz, os quadros são armazenados em um array */
 
-    frameMatrixColumns = lines*cols; // define a quantidade de quadros na matriz
+    frameArraySize = lines*cols; // define a quantidade de quadros na matriz
     uint8_t width = image->width/cols; // calcula a largura de cada quadro
     uint8_t height = image->height/lines; // calcula a altura de cada quadro
     
-    // define a matriz de Rects de origem para recorte do sprite
-    // a matriz possui apenas uma linha, mas várias colunas
-    frameMatrix = new SDL_Rect*[1]; // aloca apenas uma única linha
-    frameMatrix[0] = new SDL_Rect[frameMatrixColumns]; // várias colunas, uma para cada quadro
+    // define o array de Rects de origem para recorte do sprite
+    frameArray = new SDL_Rect[frameArraySize]; // vários quadros
 
-    // percorre a matriz de quadros e adiciona e configura cada um dos quadros de recorte
+    // percorre o array de quadros e adiciona e configura cada um dos quadros de recorte
     for(int l=0;l<lines;l++){
         for(int c=0;c<cols;c++){
-            SDL_Rect* rect = frameMatrix[cols*l+c];
-            rect->w=width;
-            rect->h=height;
-            rect->x=width*c;
-            rect->y=height*l;
+            frameArray[cols*l+c].w=width;
+            frameArray[cols*l+c].h=height;
+            frameArray[cols*l+c].x=width*c;
+            frameArray[cols*l+c].y=height*l;
         }
     }
     frameIndex = 0;
@@ -41,5 +38,5 @@ MultiSimpleSprite::~MultiSimpleSprite(){}
 // GETTERS & SETTERS
 //---------------------------------------------------------------------------------------------------------
 SDL_Rect* MultiSimpleSprite::getFrame(){
-    return frameMatrix[frameIndex]; // retorna o quadro especificado da matriz
+    return &frameArray[frameIndex]; // retorna o quadro especificado da matriz
 }

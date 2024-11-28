@@ -12,7 +12,7 @@ class Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     BufferedImage *image; // imagem do sprite
-    SDL_Rect *frameMatrix; // Matriz de Rects de origem para renderização
+    SDL_Rect *frameArray; // Array de Rects de origem para renderização
     SDL_Rect rectDest; // o rect de destino para renderização
     float posX, posY;
     float speedX;

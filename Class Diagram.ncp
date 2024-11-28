@@ -48,9 +48,10 @@
         <Name>Sprite</Name>
         <Access>Public</Access>
         <Location left="1030" top="536" />
-        <Size width="200" height="315" />
+        <Size width="200" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public BufferedImage image</Member>
+        <Member type="Field">public SDL_Rect frameArray</Member>
         <Member type="Field">public SDL_Rect rectDest</Member>
         <Member type="Field">public float posX</Member>
         <Member type="Field">public float posY</Member>
@@ -72,7 +73,6 @@
         <Location left="868" top="973" />
         <Size width="214" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">public SDL_Rect rectOrig</Member>
         <Member type="Constructor">public SimpleSprite(BufferedImage image)</Member>
         <Member type="Destructor">~SimpleSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
@@ -84,8 +84,8 @@
         <Location left="1196" top="973" />
         <Size width="368" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">public vector&lt;SDL_Rect&gt; rectOrigList</Member>
         <Member type="Field">public uint16_t frameIndex</Member>
+        <Member type="Field">public uint16_t frameArraySize</Member>
         <Member type="Constructor">public MultiSimpleSprite(BufferedImage image, uint8_t lines, uint8_t cols)</Member>
         <Member type="Destructor">~MultiSimpleSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
@@ -95,13 +95,14 @@
         <Name>AnimatedSprite</Name>
         <Access>Public</Access>
         <Location left="1196" top="1241" />
-        <Size width="368" height="162" />
+        <Size width="368" height="179" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">public vector&lt;SDL_Rect&gt; rectOrigList</Member>
-        <Member type="Field">public uint16_t frameIndex</Member>
+        <Member type="Field">public float frameTime</Member>
+        <Member type="Field">public float accTime</Member>
         <Member type="Constructor">public AnimatedSprite(BufferedImage image, uint8_t lines, uint8_t cols)</Member>
         <Member type="Destructor">~AnimatedSprite()</Member>
         <Member type="Method">public SDL_Rect getFrame()</Member>
+        <Member type="Method">private void changeFrame()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -111,7 +112,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>1106</X>
-          <Y>876</Y>
+          <Y>893</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="4" second="2">
@@ -119,7 +120,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>1156</X>
-          <Y>876</Y>
+          <Y>893</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="5" second="4">

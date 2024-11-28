@@ -12,6 +12,10 @@ using namespace std;
 /** Uma Implementação simples de um Sprite Animado com vários quadros com a mesma dimensão.
  *  Cada quadro é usado para representar um quadro da animação. */
 class AnimatedSprite: public MultiSimpleSprite{
+private:
+    /* MÉTODOS privados -----------------------------------------------------------*/
+    void changeFrame(); // calcula e muda o quadro do jogo
+
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     // possui uma lista de RectOrig, pois precisa armazenar um rect para cada quadro
@@ -26,7 +30,6 @@ public:
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
     SDL_Rect* getFrame() override; // Retorna a informação do Frame do sprite a ser desenhado
-
-    /* MÉTODOS ----------------------------------------------------------*/
-    void changeFrame(); // calcula e muda o quadro do jogo
 };
+
+    

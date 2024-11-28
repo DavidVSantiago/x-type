@@ -6,6 +6,7 @@
 #include "engine/scenes/types/SimpleScene.h"
 #include "engine/sprites/types/SimpleSprite.h"
 #include "engine/sprites/types/MultiSimpleSprite.h"
+#include "engine/sprites/types/AnimatedSprite.h"
 
 using namespace std;
 

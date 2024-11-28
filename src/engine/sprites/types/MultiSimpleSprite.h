@@ -15,7 +15,7 @@ class MultiSimpleSprite: public Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     uint16_t frameIndex; // indice do quadro a ser renderizado
-    uint16_t frameMatrixColumns; // quantidade de quadros na matriz
+    uint16_t frameArraySize; // quantidade de quadros do array
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     // recebe a ref da imagem do sprite, junto com as quantidades de linhas e colunas do sprite
