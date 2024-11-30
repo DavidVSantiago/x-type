@@ -5,12 +5,12 @@
 //---------------------------------------------------------------------------------------------------------
 Cenario::Cenario(string name):SimpleScene(name){
 
-    res->PATH_IMGS_ASSETS="src/assets/imgs/"; // define o diretório dos arquivos de imagem
+    res->setImagesAsset("src/assets/imgs/"); // define o diretório dos arquivos de imagem
 
     // carrega as imagens
-    res->loadImage("bg2",".png");
-    res->loadImage("sprite_inimigo",".png");
-    res->loadImage("parada",".png");
+    res->loadImage("bg2","pNG");
+    res->loadImage("sprite_inimigo",".Png");
+    res->loadImage("parada2",".png");
 
     // Criar uma lista de sprites
     vector<Sprite*> listaSprites;
@@ -31,9 +31,10 @@ Cenario::Cenario(string name):SimpleScene(name){
     inimigo3->posY=100;
     inimigo3->speedY=100; // 100px/s
     listaSprites.push_back(inimigo3);
-    person = new SimpleSprite(res->getImage("parada"));
+    person = new SimpleSprite(res->getImage("parada2"));
     person->posX=480;
     person->posY=180;
+    person->speedY=50;
     listaSprites.push_back(person);
 
     // adiciona um layer com os sprites
@@ -67,5 +68,9 @@ void Cenario::checkCollisions(){
     if(inimigo3->posY<=0 || (inimigo3->posY+inimigo3->getFrame()->h)>=this->res->screenHeight){
         inimigo3->unmove();
         inimigo3->speedY*=-1;
+    }
+    if(person->posY<=0 || (person->posY+person->getFrame()->h)>=this->res->screenHeight){
+        person->unmove();
+        person->speedY*=-1;
     }
 }

@@ -10,9 +10,10 @@ SimpleSprite::SimpleSprite(BufferedImage* image):Sprite(image) {
 
     // define o array de Rects de origem para recorte do sprite
     frameArray = new SDL_Rect[1]; // apenas um único quadro
-    frameArray[0].w=image->width;
-    frameArray[0].h=image->height;
-    frameArray[0].x=frameArray[0].y=0.0;
+    frameArray[0].w=image->width*(res->drawAreaWidth/(float)image->width);
+    frameArray[0].h=image->height*(res->drawAreaHeight/(float)image->height);
+    frameArray[0].x=0+res->origX;
+    frameArray[0].y=0+res->origY;
 }
 SimpleSprite::~SimpleSprite(){}
 

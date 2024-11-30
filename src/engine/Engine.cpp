@@ -35,6 +35,7 @@ void Engine::update(){
 }
 
 void Engine::render(){
+    SDL_SetRenderDrawColor(this->res->renderer, 0, 0, 0, 255);
     SDL_RenderClear(this->res->renderer);
     this->sceneManager->render();
     SDL_RenderPresent(this->res->renderer);
@@ -70,7 +71,7 @@ Engine* Engine::getInstance(){
     return instance;
 }
 
-void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat = Resources::RGBA32){
+void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
 
     // inicializa o Resources
     this->res = Resources::getInstance();
@@ -87,16 +88,43 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat = Resour
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         this->isRunning = false;
     }else{
-        this->res->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
+        SDL_DisplayMode displayMode;
+        if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) cerr << "Erro ao obter a resolução da tela! Erro: " << SDL_GetError() << endl;
+
+        // Obtém a resolução da tela
+        int screenWidth = displayMode.w;
+        int screenHeight = displayMode.h;
+
+         // Calcula o fator de escala para manter a proporção
+        float scaleWidth = static_cast<float>(screenWidth) / res->screenWidth;
+        float scaleHeight = static_cast<float>(screenHeight) / res->screenHeight;
+        float scale = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight;
+
+        // Calcula o tamanho da área desenhada (preservando a proporção)
+        res->drawAreaWidth = static_cast<int>(res->screenWidth * scale);
+        res->drawAreaHeight = static_cast<int>(res->screenHeight * scale);
+
+        // Calcula as posições para centralizar a área de desenho na tela
+        res->origX = (screenWidth - res->drawAreaWidth) / 2;
+        res->origY = (screenHeight - res->drawAreaHeight) / 2;
+
+        this->res->window = SDL_CreateWindow("Tela Cheia com Letterboxing",
+                                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                          screenWidth, screenHeight, SDL_WINDOW_SHOWN);
         if( this->res->window == NULL ){
             printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
             this->isRunning = false;
         }else
-        this->res->renderer = SDL_CreateRenderer(this->res->window, -1, 0);
+        this->res->setRenderer(SDL_CreateRenderer(this->res->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
 
         // inicializa o SceneManager
         this->sceneManager = SceneManager::getInstance();
         this->sceneManager->init();
+
+        SDL_Rect destRect = { res->origX, res->origY, res->drawAreaWidth, res->drawAreaHeight };
+        SDL_SetRenderDrawColor(res->renderer, 255, 255, 255, 255);  // Cor do "conteúdo" (exemplo de uma área branca)
+        SDL_RenderFillRect(res->renderer, &destRect);  // Preenche o retângulo
+        SDL_RenderPresent(this->res->renderer);
     }
 }
 

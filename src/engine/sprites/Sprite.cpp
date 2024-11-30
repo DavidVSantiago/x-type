@@ -22,8 +22,8 @@ Sprite::~Sprite(){}
 // GETTERS & SETTERS
 //---------------------------------------------------------------------------------------------------------
 SDL_Rect* Sprite::getRectDest(){
-    rectDest.x=(int)posX;
-    rectDest.y=(int)posY;
+    rectDest.x=(int)posX+res->origX;
+    rectDest.y=(int)posY+res->origY;
     return &rectDest;
 }
 

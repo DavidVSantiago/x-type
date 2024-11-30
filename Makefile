@@ -20,6 +20,7 @@ SRC_CPP = \
 	src/engine/sprites/types/AnimatedSprite.cpp \
 	src/engine/utils/libs/lodepng.cpp \
 	src/engine/utils/image/BufferedImage.cpp \
+	src/engine/utils/image/ImageIO.cpp \
 	src/engine/Resources.cpp \
 	src/engine/Engine.cpp \
 	src/cenario.cpp \
