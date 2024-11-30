@@ -13,7 +13,6 @@ protected:
     Uint64 startFrameTime, endFrameTime, oldFrameTime, diffTime, frameDelay;
     Resources* res;
     SceneManager* sceneManager;
-    Scene* actualScene;
 
     /* MÉTODOS PRIVADOS */
     void checkEvents();
@@ -35,7 +34,4 @@ public:
 
     /* MÉTODOS */
     void checkSDLEvents();
-    void setActualScene(Scene* scene){
-        this->actualScene = scene;
-    }
 };

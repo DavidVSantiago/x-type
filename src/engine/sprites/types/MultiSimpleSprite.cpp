@@ -14,7 +14,7 @@ MultiSimpleSprite::MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t
     uint8_t height = image->height/lines; // calcula a altura de cada quadro
     
     // define o array de Rects de origem para recorte do sprite
-    frameArray = new SDL_Rect[frameArraySize]; // vários quadros
+    frameArray = new SDL_Rect[frameArraySize]; // vários quadros (máximo de 256)
 
     // percorre o array de quadros e adiciona e configura cada um dos quadros de recorte
     for(int l=0;l<lines;l++){

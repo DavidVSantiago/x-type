@@ -51,16 +51,16 @@ void Engine::handleEvents(){
             break;
         }
     }
-    this->actualScene->handleEvents(); // versão sobrescrita pelo cenário do cliente
+    this->sceneManager->handleEvents(); // versão sobrescrita pelo cenário do cliente
 }
 
 void Engine::update(){
-    this->actualScene->update();
+    this->sceneManager->update();
 }
 
 void Engine::render(){
     SDL_RenderClear(this->res->renderer);
-    this->actualScene->render();
+    this->sceneManager->render();
     SDL_RenderPresent(this->res->renderer);
 }
 

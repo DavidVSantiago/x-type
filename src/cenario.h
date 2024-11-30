@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include "engine/scenes/SceneManager.h"
 #include "engine/scenes/types/SimpleScene.h"
 #include "engine/sprites/types/SimpleSprite.h"
 #include "engine/sprites/types/MultiSimpleSprite.h"

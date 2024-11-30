@@ -3,7 +3,7 @@
 #include "engine/Engine.h"
 #include "engine/sprites/Sprite.h"
 
-class Game: public Engine{
+class Game{
 public:
     /* CONSTRUTORES E DESTRUTORES */
     Game(int width, int height);

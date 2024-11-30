@@ -7,17 +7,16 @@
 class SceneManager {
     
 private:
+    /* ATRIBUTOS privados------------------------------------------------------------------*/
     static SceneManager* instance; // singleton
 
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     SceneManager(){}
     ~SceneManager(){}
-    /* MÉTODOS PRIVADOS */
-    void changeScene(Scene* scene);
 
 public:
+    /* ATRIBUTOS ------------------------------------------------------------------*/
     Scene* actualScene;
-    Resources* res;
     
     /* MÉTODOS */
     static SceneManager* getInstance();

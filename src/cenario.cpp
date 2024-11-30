@@ -4,6 +4,7 @@
 // CONSTRUTORES E DESTRUTORES
 //---------------------------------------------------------------------------------------------------------
 Cenario::Cenario(string name):SimpleScene(name){
+
     // carrega as imagens
     this->res->loadImage("bg",".png");
     this->res->loadImage("sprite_inimigo",".png");

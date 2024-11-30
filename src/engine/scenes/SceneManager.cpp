@@ -3,14 +3,6 @@
 SceneManager *SceneManager::instance = nullptr; // inicialização da instância (específico do C++)
 
 //---------------------------------------------------------------------------------------------------------
-/* MÉTODOS PRIVADOS */
-//---------------------------------------------------------------------------------------------------------
-
-void SceneManager::changeScene(Scene* scene){
-    this->actualScene=scene;
-}
-
-//---------------------------------------------------------------------------------------------------------
 /* MÉTODOS */
 //---------------------------------------------------------------------------------------------------------
 
@@ -21,10 +13,10 @@ SceneManager* SceneManager::getInstance(){
     return instance;
 }
 void SceneManager::init(){
-    this->res = Resources::getInstance();
+    actualScene = nullptr;
 }
 void SceneManager::startScene(Scene* scene){
-    this->changeScene(scene);
+    this->actualScene = scene;
 }
 
 //---------------------------------------------------------------------------------------------------------

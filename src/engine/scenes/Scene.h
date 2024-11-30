@@ -5,6 +5,7 @@
 #include "../Resources.h"
 #include "SceneLayer.h"
 
+
 using namespace std;
 
 /***********************************************************************************/
@@ -12,15 +13,19 @@ using namespace std;
 /***********************************************************************************/
 class Scene {
 protected:
-    std::string name;
+    /* ATRIBUTOS protegidos ------------------------------------------------------------------*/
+    string name; // nome da cena, para fins de testes
     Resources* res;
+
+private:
+    /* ATRIBUTOS private ------------------------------------------------------------------*/
     SceneLayer** layersList; // lista de layers da cena
     uint8_t layersListCapacity; // capacidade máxima da lista de layers da cena (inicial = 5)
     uint8_t layersListSize; // quantidade de layers atualmente na cena
 
 public:
     /* CONSTRUTORES E DESTRUTORES*/
-    Scene(std::string name);
+    Scene(string name);
     virtual ~Scene();
 
     /* MÉTODOS DO GAMELOOP */

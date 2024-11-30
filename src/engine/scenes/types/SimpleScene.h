@@ -3,17 +3,13 @@
 #include "../Scene.h"
 #include "../../sprites/Sprite.h"
 
-using namespace std;
-
 /***********************************************************************************/
 /* CLASSE ABSTRATA QUE REPRESENTA UMA CENA SIMPLES */
 /***********************************************************************************/
 class SimpleScene : public Scene {    
 public:
-    /* ATRIBUTOS */
-
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
-    SimpleScene(std::string name);
+    SimpleScene(string name);
     ~SimpleScene();
     
     /* MÉTODOS */

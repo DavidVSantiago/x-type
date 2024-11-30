@@ -9,11 +9,13 @@
 /***********************************************************************************/
 class SceneLayer {
 private:
+    /* ATRIBUTOS privados ------------------------------------------------------------------*/
     Sprite** spriteList; // lista de sprites do layer
     uint8_t spriteListCapacity; // capacidade máxima da lista de sprites do layer (inicial = 50)
     uint8_t spriteListSize; // quantidade de layers atualmente na cena
     
 public:
+    /* ATRIBUTOS ------------------------------------------------------------------*/
     Resources* res;
     float posX,posY;
 

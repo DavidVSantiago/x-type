@@ -9,12 +9,12 @@ using namespace std;
 class MultiSimpleSprite: public Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
-    uint16_t frameIndex; // indice do quadro a ser renderizado
-    uint16_t frameArraySize; // quantidade de quadros do array
+    uint8_t frameIndex; // indice do quadro a ser renderizado
+    uint8_t frameArraySize; // quantidade de quadros do array
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     // recebe a ref da imagem do sprite, junto com as quantidades de linhas e colunas do sprite
-    // de onde serão cortados os quadros (máximo de 255 linhas e 255 colunas)
+    // de onde serão cortados os quadros (máximo de 16 linhas e 16 colunas)
     MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t cols);
     virtual ~MultiSimpleSprite();
 
