@@ -29,4 +29,5 @@ public:
     /* MÉTODOS */
     void addSprite(Sprite* sprite);
     Sprite* getSprite(int index);
+    virtual void move();
 };

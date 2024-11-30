@@ -31,3 +31,9 @@ void Scene::addLayer(vector<Sprite*> spriteList){
 SceneLayer* Scene::getLayer(int index){
     return layersList[index];
 }
+
+void Scene::move(){
+    for(uint8_t i=0; i<layersListSize;i++){ // percorre a lista de layers da cena
+        layersList[i]->move(); // move cada um dos layers
+    }
+}

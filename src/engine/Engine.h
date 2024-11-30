@@ -8,11 +8,19 @@ using namespace std;
 
 class Engine
 {
-protected:
-    /* ATRIBUTOS PRIVADOS */
+private:
+/* ATRIBUTOS privados -----------------------------------------------*/
+    static Engine* instance; // singleton
+    
+    // variáveis de gerenciamento de deltatime
     Uint64 startFrameTime, endFrameTime, oldFrameTime, diffTime, frameDelay;
+
     Resources* res;
     SceneManager* sceneManager;
+
+    /* CONSTRUTORES E DESTRUTORES privados -----------------------------*/
+    Engine();
+    ~Engine();
 
     /* MÉTODOS PRIVADOS */
     void checkEvents();
@@ -22,10 +30,6 @@ public:
     SDL_Event event;
     bool isRunning;
 
-    /* CONSTRUTORES E DESTRUTORES */
-    Engine(int width, int height);
-    ~Engine();
-
     /* MÉTODOS DO GAMELOOP */
     void handleEvents();
     void update();
@@ -33,5 +37,8 @@ public:
     void gameloop();
 
     /* MÉTODOS */
-    void checkSDLEvents();
+    static Engine* getInstance(); // obtém o singleton
+    void init(uint16_t width, uint16_t height);
+    void init(uint16_t width, uint16_t height, uint32_t pixelFormat = Resources::RGBA32);
+    void start(Scene* startScene, uint64_t timeMilis);
 };

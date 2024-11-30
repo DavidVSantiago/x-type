@@ -16,9 +16,6 @@ protected:
     /* ATRIBUTOS protegidos ------------------------------------------------------------------*/
     string name; // nome da cena, para fins de testes
     Resources* res;
-
-private:
-    /* ATRIBUTOS private ------------------------------------------------------------------*/
     SceneLayer** layersList; // lista de layers da cena
     uint8_t layersListCapacity; // capacidade máxima da lista de layers da cena (inicial = 5)
     uint8_t layersListSize; // quantidade de layers atualmente na cena
@@ -36,4 +33,5 @@ public:
     /* MÉTODOS */
     void addLayer(vector<Sprite*> spriteList);
     SceneLayer* getLayer(int index);
+    virtual void move();
 };

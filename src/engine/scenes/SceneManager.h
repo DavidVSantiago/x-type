@@ -9,19 +9,18 @@ class SceneManager {
 private:
     /* ATRIBUTOS privados------------------------------------------------------------------*/
     static SceneManager* instance; // singleton
+    Scene* actualScene;
 
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     SceneManager(){}
     ~SceneManager(){}
 
 public:
-    /* ATRIBUTOS ------------------------------------------------------------------*/
-    Scene* actualScene;
     
     /* MÉTODOS */
     static SceneManager* getInstance();
     void init();/** Inicializa os recursos do SceneManager */
-    void startScene(Scene* scene);
+    void startScene(Scene* scene, uint64_t timeMilis);
 
     /* MÉTODOS DO GAMELOOP */
     void handleEvents();

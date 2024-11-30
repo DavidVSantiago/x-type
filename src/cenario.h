@@ -14,7 +14,7 @@ using namespace std;
 class Cenario: public SimpleScene{
 public:
     /* ATRIBUTOS ----------------------------------------------*/
-    Sprite *bg,*inimigo,*person;
+    Sprite *bg,*inimigo,*inimigo2,*inimigo3,*person;
     /* CONSTRUTORES E DESTRUTORES -----------------------------*/
     Cenario(string name);
     ~Cenario();

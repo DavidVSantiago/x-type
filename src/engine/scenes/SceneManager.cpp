@@ -1,5 +1,8 @@
 #include "SceneManager.h"
 
+//---------------------------------------------------------------------------------------------------------
+// ATRIBUTOS privados
+//---------------------------------------------------------------------------------------------------------
 SceneManager *SceneManager::instance = nullptr; // inicialização da instância (específico do C++)
 
 //---------------------------------------------------------------------------------------------------------
@@ -15,7 +18,8 @@ SceneManager* SceneManager::getInstance(){
 void SceneManager::init(){
     actualScene = nullptr;
 }
-void SceneManager::startScene(Scene* scene){
+void SceneManager::startScene(Scene* scene, uint64_t timeMilis){
+    // TODO implementar a mecânica de inicar o cenário após "timeMilis" de tempo
     this->actualScene = scene;
 }
 
@@ -28,6 +32,7 @@ void SceneManager::handleEvents(){
 }
 void SceneManager::update(){
     this->actualScene->update();
+    this->actualScene->move();
 }
 void SceneManager::render(){
     this->actualScene->render();
