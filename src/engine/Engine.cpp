@@ -108,7 +108,7 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         res->origX = (screenWidth - res->drawAreaWidth) / 2;
         res->origY = (screenHeight - res->drawAreaHeight) / 2;
 
-        this->res->window = SDL_CreateWindow("Tela Cheia com Letterboxing",
+        this->res->window = SDL_CreateWindow("Game",
                                           SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                           screenWidth, screenHeight, SDL_WINDOW_SHOWN);
         if( this->res->window == NULL ){
@@ -120,11 +120,6 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         // inicializa o SceneManager
         this->sceneManager = SceneManager::getInstance();
         this->sceneManager->init();
-
-        SDL_Rect destRect = { res->origX, res->origY, res->drawAreaWidth, res->drawAreaHeight };
-        SDL_SetRenderDrawColor(res->renderer, 255, 255, 255, 255);  // Cor do "conteúdo" (exemplo de uma área branca)
-        SDL_RenderFillRect(res->renderer, &destRect);  // Preenche o retângulo
-        SDL_RenderPresent(this->res->renderer);
     }
 }
 
