@@ -34,6 +34,7 @@ public:
     SDL_Window* window;
     SDL_Renderer* renderer;
     uint16_t origX, origY, drawAreaWidth, drawAreaHeight;
+    float scaleRatio; // multiplicador de escala para tela cheia
 
     /* MÉTODOS ---------------------------------------------------------*/
     static Resources* getInstance(); // obtém o singleton

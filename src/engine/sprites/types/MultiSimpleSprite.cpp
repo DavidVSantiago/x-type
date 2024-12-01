@@ -28,9 +28,10 @@ MultiSimpleSprite::MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t
     frameIndex = 0;
 
     // define o Rect de destino para desenhar o sprite na tela
-    rectDest.w=width;
-    rectDest.h=height;
-    rectDest.x=rectDest.y=0.0;
+    rectDest.w=width*res->scaleRatio;
+    rectDest.h=height*res->scaleRatio;
+    rectDest.x=res->origX;
+    rectDest.y=res->origY;
 }
 MultiSimpleSprite::~MultiSimpleSprite(){}
 

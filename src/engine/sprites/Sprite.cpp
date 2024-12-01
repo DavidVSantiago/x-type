@@ -4,16 +4,18 @@
 // CONSTRUTORES E DESTRUTORES
 //---------------------------------------------------------------------------------------------------------
 Sprite::Sprite(BufferedImage* image) {
+    res = Resources::getInstance();
     this->image = image;
+    res->scaleRatio = res->drawAreaWidth/(float)res->screenWidth;
     // define o Rect de destino para desenhar o sprite na tela
-    rectDest.w=image->width;
-    rectDest.h=image->height;
-    rectDest.x=rectDest.y=0.0;
+    rectDest.w=image->width*res->scaleRatio;
+    rectDest.h=image->height*res->scaleRatio;
+    rectDest.x=res->origX;
+    rectDest.y=res->origY;
     posX = 0.0;
     posY = 0.0;
     speedX = 0.0;
     speedY = 0.0;
-    res = Resources::getInstance();
     
 }
 Sprite::~Sprite(){}
@@ -22,8 +24,8 @@ Sprite::~Sprite(){}
 // GETTERS & SETTERS
 //---------------------------------------------------------------------------------------------------------
 SDL_Rect* Sprite::getRectDest(){
-    rectDest.x=(int)posX+res->origX;
-    rectDest.y=(int)posY+res->origY;
+    rectDest.x=res->origX + (int)(posX*res->scaleRatio);
+    rectDest.y=res->origY + (int)(posY*res->scaleRatio);
     return &rectDest;
 }
 

@@ -98,11 +98,11 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
          // Calcula o fator de escala para manter a proporção
         float scaleWidth = static_cast<float>(screenWidth) / res->screenWidth;
         float scaleHeight = static_cast<float>(screenHeight) / res->screenHeight;
-        float scale = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight;
+        res->scaleRatio = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight;
 
         // Calcula o tamanho da área desenhada (preservando a proporção)
-        res->drawAreaWidth = static_cast<int>(res->screenWidth * scale);
-        res->drawAreaHeight = static_cast<int>(res->screenHeight * scale);
+        res->drawAreaWidth = static_cast<int>(res->screenWidth * res->scaleRatio);
+        res->drawAreaHeight = static_cast<int>(res->screenHeight * res->scaleRatio);
 
         // Calcula as posições para centralizar a área de desenho na tela
         res->origX = (screenWidth - res->drawAreaWidth) / 2;
