@@ -67,9 +67,6 @@
         "simplesprite.h": "c",
         "animatedsprite.h": "c",
         "multisimplesprite.h": "c",
-        "fstream": "cpp",
-        "iostream": "cpp",
-        "istream": "cpp",
-        "imageio.h": "c"
+        "fstream": "cpp"
     }
 }

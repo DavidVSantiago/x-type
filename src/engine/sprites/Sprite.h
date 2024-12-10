@@ -1,6 +1,6 @@
 #pragma once
 #include "../Resources.h"
-#include "../utils/image/BufferedImage.h"
+#include "utils/BufferedImage.h"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     BufferedImage *image; // imagem do sprite
     SDL_Rect *frameArray; // Array de Rects de origem para renderização
-    SDL_Rect rectDest; // o rect de destino para renderização
+    SDL_Rect *destArray; // Array de Rcts de destino para renderização
     float posX, posY;
     float speedX;
     float speedY;
@@ -23,7 +23,7 @@ public:
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
     virtual SDL_Rect* getFrame()=0; // Retorna a informação do Frame do sprite a ser desenhado
-    SDL_Rect* getRectDest(); // Retorna a informação da destino de desenho na tela
+    virtual SDL_Rect* getDest()=0; // Retorna a informação da destino de desenho na tela
 
     /* MÉTODOS DO GAMELOOP --------------------------------------------------------*/
     void render();

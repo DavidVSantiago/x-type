@@ -13,4 +13,5 @@ public:
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
     SDL_Rect* getFrame() override; // Retorna a informação do Quadro único do sprite a ser desenhado
+    SDL_Rect* getDest() override; // Retorna a informação da destino de desenho na tela
 };

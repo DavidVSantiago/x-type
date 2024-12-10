@@ -75,7 +75,7 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
 
     // inicializa o Resources
     this->res = Resources::getInstance();
-    this->res->init(width, height, pixelFormat); // inicializa os recursos
+    this->res->init(width, height, pixelFormat);
 
     this->isRunning = true;
 
@@ -88,41 +88,70 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         this->isRunning = false;
     }else{
-        SDL_DisplayMode displayMode;
-        if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) cerr << "Erro ao obter a resolução da tela! Erro: " << SDL_GetError() << endl;
-
-        // Obtém a resolução da tela
-        int screenWidth = displayMode.w;
-        int screenHeight = displayMode.h;
-
-         // Calcula o fator de escala para manter a proporção
-        float scaleWidth = static_cast<float>(screenWidth) / res->screenWidth;
-        float scaleHeight = static_cast<float>(screenHeight) / res->screenHeight;
-        res->scaleRatio = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight;
-
-        // Calcula o tamanho da área desenhada (preservando a proporção)
-        res->drawAreaWidth = static_cast<int>(res->screenWidth * res->scaleRatio);
-        res->drawAreaHeight = static_cast<int>(res->screenHeight * res->scaleRatio);
-
-        // Calcula as posições para centralizar a área de desenho na tela
-        res->origX = (screenWidth - res->drawAreaWidth) / 2;
-        res->origY = (screenHeight - res->drawAreaHeight) / 2;
-
-        this->res->window = SDL_CreateWindow("Game",
-                                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                          screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+        this->res->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
         if( this->res->window == NULL ){
             printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
             this->isRunning = false;
         }else
+   
         this->res->setRenderer(SDL_CreateRenderer(this->res->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
 
         // inicializa o SceneManager
         this->sceneManager = SceneManager::getInstance();
         this->sceneManager->init();
+        
     }
-}
 
+    /** VERSÃO FULLSCREEN - PARA REFERÊNCIA */
+    // // inicializa o Resources
+    // this->res = Resources::getInstance();
+    // this->res->init(width, height, pixelFormat); // inicializa os recursos
+
+    // this->isRunning = true;
+
+    // // inicializa as variável de tempo do gameloop
+    // this->frameDelay=16; // 16ms para 60FPS
+    // this->startFrameTime = this->oldFrameTime = this->res->getTimeTick();
+
+    // // inicializa o SDL ---------------
+    // if( SDL_Init( SDL_INIT_VIDEO ) < 0 ){
+    //     printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+    //     this->isRunning = false;
+    // }else{
+    //     SDL_DisplayMode displayMode;
+    //     if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) cerr << "Erro ao obter a resolução da tela! Erro: " << SDL_GetError() << endl;
+
+    //     // Obtém a resolução da tela
+    //     int screenWidth = displayMode.w;
+    //     int screenHeight = displayMode.h;
+
+    //      // Calcula o fator de escala para manter a proporção
+    //     float scaleWidth = static_cast<float>(screenWidth) / res->screenWidth;
+    //     float scaleHeight = static_cast<float>(screenHeight) / res->screenHeight;
+    //     res->scaleRatio = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight;
+
+    //     // Calcula o tamanho da área desenhada (preservando a proporção)
+    //     res->drawAreaWidth = static_cast<int>(res->screenWidth * res->scaleRatio);
+    //     res->drawAreaHeight = static_cast<int>(res->screenHeight * res->scaleRatio);
+
+    //     // Calcula as posições para centralizar a área de desenho na tela
+    //     res->origX = (screenWidth - res->drawAreaWidth) / 2;
+    //     res->origY = (screenHeight - res->drawAreaHeight) / 2;
+
+    //     this->res->window = SDL_CreateWindow("Game",
+    //                                       SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    //                                       screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+    //     if( this->res->window == NULL ){
+    //         printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+    //         this->isRunning = false;
+    //     }else
+    //     this->res->setRenderer(SDL_CreateRenderer(this->res->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
+
+    //     // inicializa o SceneManager
+    //     this->sceneManager = SceneManager::getInstance();
+    //     this->sceneManager->init();
+    // }
+}
 
 void Engine::start(Scene* startScene, uint64_t timeMilis){
     sceneManager->startScene(startScene,timeMilis);

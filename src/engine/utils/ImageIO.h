@@ -5,9 +5,9 @@
 #include <fstream>
 #include <vector>
 #include <unordered_map>
-#include "../libs/lodepng.h"
+#include "libs/lodepng.h"
 #include <cstdint>
-#include "BufferedImage.h"
+#include "../sprites/utils/BufferedImage.h"
 
 using namespace std;
 

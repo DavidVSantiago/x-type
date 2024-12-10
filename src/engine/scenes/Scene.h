@@ -3,8 +3,7 @@
 #include <string>
 #include <cstdint>
 #include "../Resources.h"
-#include "SceneLayer.h"
-
+#include "utils/SceneLayer.h"
 
 using namespace std;
 

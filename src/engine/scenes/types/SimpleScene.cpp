@@ -7,20 +7,9 @@ SimpleScene::SimpleScene(std::string name):Scene(name){}
 SimpleScene::~SimpleScene(){}
 
 //---------------------------------------------------------------------------------------------------------
-// MÉTODOS
-//---------------------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------------------
 // MÉTODOS DO GAMELOOP
 //---------------------------------------------------------------------------------------------------------
 
-// void SimpleScene::handleEvents(){
-
-// }
-// void SimpleScene::update(){
-
-// }
-// void SimpleScene::render(){
-    
-// }
+void SimpleScene::update(){
+    this->checkCollisions(); // invoca a implementação a ser fornecida por quem herdar
+}

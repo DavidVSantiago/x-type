@@ -3,19 +3,22 @@
 #include "../Scene.h"
 #include "../../sprites/Sprite.h"
 
+using namespace std;
+
 /***********************************************************************************/
 /* CLASSE ABSTRATA QUE REPRESENTA UMA CENA SIMPLES */
 /***********************************************************************************/
 class SimpleScene : public Scene {    
 public:
+    /* ATRIBUTOS */
+
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     SimpleScene(string name);
     ~SimpleScene();
     
-    /* MÉTODOS */
-    virtual void checkCollisions()=0;
-};
+    /* MÉTODOS DO GAMELOOP */
+    void update() override; // implementa para invocar 'checkCollisions'
 
-/***********************************************************************************/
-/* CLASSE QUE REPRESENTA UMA CAMADA DE SPRITES A SER INCORPORADA NA CENA */
-/***********************************************************************************/
+    /* MÉTODOS */
+    virtual void checkCollisions()=0; // metodo que verificará as colisões entre os objetos da cena
+};

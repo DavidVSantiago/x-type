@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------------------
 // CONSTRUTORES E DESTRUTORES
 //---------------------------------------------------------------------------------------------------------
-BufferedImage::BufferedImage(SDL_Texture* texture, int width, int height){
+BufferedImage::BufferedImage(SDL_Texture* texture, uint16_t width, uint16_t height){
     this->texture = texture;
     this->width=width;
     this->height=height;

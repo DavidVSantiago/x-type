@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include "Resources.h"
-#include "scenes/SceneManager.h"
+#include "scenes/utils/SceneManager.h"
 #include "scenes/Scene.h"
 
 using namespace std;
@@ -9,10 +9,10 @@ using namespace std;
 class Engine
 {
 private:
-/* ATRIBUTOS privados -----------------------------------------------*/
+    /* ATRIBUTOS privados -----------------------------------------------*/
     static Engine* instance; // singleton
-    
-    // variáveis de gerenciamento de deltatime
+
+    /* ATRIBUTOS PRIVADOS */
     Uint64 startFrameTime, endFrameTime, oldFrameTime, diffTime, frameDelay;
 
     Resources* res;
@@ -21,9 +21,6 @@ private:
     /* CONSTRUTORES E DESTRUTORES privados -----------------------------*/
     Engine();
     ~Engine();
-
-    /* MÉTODOS PRIVADOS */
-    void checkEvents();
 
 public:
     /* ATRIBUTOS */

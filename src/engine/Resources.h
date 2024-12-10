@@ -6,8 +6,8 @@
 #include <algorithm>
 #include <cctype> 
 #include "utils/libs/lodepng.h"
-#include "utils/image/BufferedImage.h"
-#include "utils/image/ImageIO.h"
+#include "sprites/utils/BufferedImage.h"
+#include "utils/ImageIO.h"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ private:
 
     /* CONSTRUTORES E DESTRUTORES privados -----------------------------*/
     Resources();
-    ~Resources();
+    virtual ~Resources();
 public:
 
     /* ATRIBUTOS -------------------------------------------------------*/
@@ -33,8 +33,6 @@ public:
     uint16_t screenWidth,screenHeight;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    uint16_t origX, origY, drawAreaWidth, drawAreaHeight;
-    float scaleRatio; // multiplicador de escala para tela cheia
 
     /* MÉTODOS ---------------------------------------------------------*/
     static Resources* getInstance(); // obtém o singleton
@@ -44,7 +42,7 @@ public:
 
     uint64_t getTimeTick();
     uint64_t getTimeTickFrequency();
-    bool loadImage(string fileName, string fileExt); // adiciona uma nova imagem à lista
+    bool loadImage(string fileName, string fileExt);
     BufferedImage* getImage(string imageName); // obtém a ref de uma imagem específico
     void clearImagens(); // limpa a lista de imagens carregadas na memória
     void formatFileExt(string &str);

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "../Resources.h"
-#include "../sprites/Sprite.h"
+#include "../../Resources.h"
+#include "../../sprites/Sprite.h"
 
 /***********************************************************************************/
 /* CLASSE QUE REPRESENTA UMA CAMADA DA CENA. Os sprites da camada se movem junto com a camada*/
@@ -24,7 +24,7 @@ public:
     ~SceneLayer();
 
     /* MÉTODOS DO GAMELOOP */
-    void render();
+    void render(); // renderiza todos os sprites de 'spriteList'
     
     /* MÉTODOS */
     void addSprite(Sprite* sprite);

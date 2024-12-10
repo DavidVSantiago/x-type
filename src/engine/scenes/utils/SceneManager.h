@@ -1,6 +1,6 @@
 #pragma once
-#include "../Resources.h"
-#include "Scene.h"
+#include "../../Resources.h"
+#include "../Scene.h"
 
 /** SINGLETON que gerencia o caregamento e transição entre as cenas do jogo
  * Classe usada pela maioria das outras classes da engine */
