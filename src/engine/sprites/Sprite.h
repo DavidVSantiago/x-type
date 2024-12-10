@@ -1,6 +1,8 @@
 #pragma once
+#include <vector>
 #include "../Resources.h"
 #include "utils/BufferedImage.h"
+#include "utils/CollisionSet.h"
 
 using namespace std;
 
@@ -10,8 +12,9 @@ class Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     BufferedImage *image; // imagem do sprite
-    SDL_Rect *frameArray; // Array de Rects de origem para renderização
-    SDL_Rect *destArray; // Array de Rcts de destino para renderização
+    vector<SDL_Rect*> frameArray; // Array de Rects de origem para renderização
+    vector<SDL_Rect*> destArray; // Array de Rcts de destino para renderização
+    vector<CollisionSet*> collSetArray; // Array de conjuntos de caixas de colisão
     float posX, posY;
     float speedX;
     float speedY;
@@ -19,7 +22,7 @@ public:
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     Sprite(BufferedImage* image); // recebe a ref da imagem do sprite
-    ~Sprite();
+    virtual ~Sprite();
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
     virtual SDL_Rect* getFrame()=0; // Retorna a informação do Frame do sprite a ser desenhado

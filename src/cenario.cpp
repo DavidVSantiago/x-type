@@ -20,17 +20,17 @@ Cenario::Cenario(string name):SimpleScene(name){
     inimigo->posX=10;
     inimigo->posY=200;
     inimigo->speedY=100; // 100px/s
-    listaSprites.push_back(inimigo);
+    //listaSprites.push_back(inimigo);
     inimigo2 = new AnimatedSprite(res->getImage("sprite_inimigo"),2,5);
     inimigo2->posX=130;
     inimigo2->posY=300;
     inimigo2->speedY=100; // 100px/s
-    listaSprites.push_back(inimigo2);
+    //listaSprites.push_back(inimigo2);
     inimigo3 = new AnimatedSprite(res->getImage("sprite_inimigo"),2,5);
     inimigo3->posX=240;
     inimigo3->posY=100;
     inimigo3->speedY=100; // 100px/s
-    listaSprites.push_back(inimigo3);
+    //listaSprites.push_back(inimigo3);
     person = new SimpleSprite(res->getImage("parada2"));
     person->posX=480;
     person->posY=180;

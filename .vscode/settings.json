@@ -67,6 +67,8 @@
         "simplesprite.h": "c",
         "animatedsprite.h": "c",
         "multisimplesprite.h": "c",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "collisionbox": "cpp",
+        "collisionboxes.h": "c"
     }
 }

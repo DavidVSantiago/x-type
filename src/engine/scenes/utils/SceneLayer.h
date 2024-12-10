@@ -12,7 +12,7 @@ private:
     /* ATRIBUTOS privados ------------------------------------------------------------------*/
     Sprite** spriteList; // lista de sprites do layer
     uint8_t spriteListCapacity; // capacidade máxima da lista de sprites do layer (inicial = 50)
-    uint8_t spriteListSize; // quantidade de layers atualmente na cena
+    uint8_t spriteListSize; // quantidade de sprites atualmente no layer
     
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
@@ -21,7 +21,7 @@ public:
 
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     SceneLayer();
-    ~SceneLayer();
+    virtual ~SceneLayer();
 
     /* MÉTODOS DO GAMELOOP */
     void render(); // renderiza todos os sprites de 'spriteList'

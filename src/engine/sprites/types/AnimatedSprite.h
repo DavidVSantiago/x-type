@@ -19,7 +19,7 @@ public:
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     // recebe a ref da imagem do sprite, junto com as quantidades de linhas e colunas do sprite
     // de onde serão cortados os quadros da animação (máximo de 255 linhas e 255 colunas)
-    AnimatedSprite(BufferedImage* image,uint8_t lines, uint8_t cols);
+    AnimatedSprite(BufferedImage* image, uint8_t lines, uint8_t cols);
     virtual ~AnimatedSprite();
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/

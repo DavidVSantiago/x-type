@@ -14,7 +14,7 @@ public:
 
     /* CONSTRUTORES E DESTRUTORES PRIVADOS*/
     SimpleScene(string name);
-    ~SimpleScene();
+    virtual ~SimpleScene();
     
     /* MÉTODOS DO GAMELOOP */
     void update() override; // implementa para invocar 'checkCollisions'

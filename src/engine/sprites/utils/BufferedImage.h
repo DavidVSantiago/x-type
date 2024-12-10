@@ -9,5 +9,5 @@ public:
 
     /* CONSTRUTORES E DESTRUTORES --------------------------------------*/
     BufferedImage(SDL_Texture* texture, uint16_t width, uint16_t height);
-    ~BufferedImage();
+    virtual ~BufferedImage();
 };
