@@ -8,7 +8,7 @@ void AnimatedSprite::changeFrame(){
     if(accTime>=frameTime){ // se o tempo acumulado do quadro alcançou o seu limite
         accTime=0.0f;
         frameIndex++; // pula para o próximo quadro da animação
-        if(frameIndex==frameArraySize) frameIndex=0;// verifica se ultrapassou o ultimo quadro e o reinicia caso positivo  
+        if(frameIndex==frameArray.size()) frameIndex=0;// verifica se ultrapassou o ultimo quadro e o reinicia caso positivo  
     }
 }
 
@@ -22,11 +22,10 @@ AnimatedSprite::AnimatedSprite(BufferedImage* image,uint8_t lines, uint8_t cols)
 AnimatedSprite::~AnimatedSprite(){}
 
 //---------------------------------------------------------------------------------------------------------
-// GETTERS & SETTERS
+// MÉTODOS DO GAMELOOP
 //---------------------------------------------------------------------------------------------------------
-SDL_Rect* AnimatedSprite::getFrame(){
+void AnimatedSprite::update(){
     changeFrame(); // verifica uma possível mudança de quadro
-    return MultiSimpleSprite::getFrame(); // invoca a versão da classe pai
 }
 
 

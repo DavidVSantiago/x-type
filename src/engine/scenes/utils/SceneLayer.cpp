@@ -11,7 +11,12 @@ SceneLayer::~SceneLayer(){}
 
 /* MÉTODOS DO GAMELOOP */
 
-// renderiza todos os sprites de 'spriteList'
+// atualiza todos os sprites de 'spriteList'
+void SceneLayer::update(){
+    for(size_t i=0;i<spriteListSize;i++){
+        spriteList[i]->update();
+    }
+}
 void SceneLayer::render(){
     for(size_t i=0;i<spriteListSize;i++){
         spriteList[i]->render();

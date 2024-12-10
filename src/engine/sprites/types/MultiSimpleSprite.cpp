@@ -9,7 +9,6 @@ MultiSimpleSprite::MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t
     *  Por isso, os rects precisam ser definidos um a um.
     *  apesar da imagem ser recebida em matriz, os quadros são armazenados em um array */
 
-    frameArraySize = lines*cols; // define a quantidade de quadros na matriz
     uint8_t width = image->width/cols; // calcula a largura de cada quadro
     uint8_t height = image->height/lines; // calcula a altura de cada quadro
     
@@ -39,16 +38,3 @@ MultiSimpleSprite::MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t
     }
 }
 MultiSimpleSprite::~MultiSimpleSprite(){}
-
-//---------------------------------------------------------------------------------------------------------
-// GETTERS & SETTERS
-//---------------------------------------------------------------------------------------------------------
-SDL_Rect* MultiSimpleSprite::getFrame(){
-    return frameArray[frameIndex]; // retorna o quadro especificado da matriz
-}
-
-SDL_Rect* MultiSimpleSprite::getDest(){
-    destArray[frameIndex]->x=(int)posX;
-    destArray[frameIndex]->y=(int)posY;
-    return destArray[frameIndex];
-}

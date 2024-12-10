@@ -18,7 +18,4 @@ public:
     
     /* MÉTODOS DO GAMELOOP */
     void update() override; // implementa para invocar 'checkCollisions'
-
-    /* MÉTODOS */
-    virtual void checkCollisions()=0; // metodo que verificará as colisões entre os objetos da cena
 };

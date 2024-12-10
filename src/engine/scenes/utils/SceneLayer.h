@@ -24,6 +24,7 @@ public:
     virtual ~SceneLayer();
 
     /* MÉTODOS DO GAMELOOP */
+    void update(); // atualiza todos os sprites de 'spriteList'
     void render(); // renderiza todos os sprites de 'spriteList'
     
     /* MÉTODOS */

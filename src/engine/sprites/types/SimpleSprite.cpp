@@ -21,21 +21,16 @@ SimpleSprite::SimpleSprite(BufferedImage* image):Sprite(image) {
     destArray[0]->x = destArray[0]->y=0.0;
 
     // define o array de Rects de origem para recorte do sprite
-    collSetArray.push_back(new CollisionSet()); // adiciona o conjunto de caixas de colisão para o quadro único
-    collSetArray[0]->addBox(0,0,image->width,image->height); // adiciona 
+    collSetArray[0]->addBox(30,5,image->width-60,image->height-10); // adiciona  
 }
 SimpleSprite::~SimpleSprite(){}
 
-//---------------------------------------------------------------------------------------------------------
-// GETTERS & SETTERS
-//---------------------------------------------------------------------------------------------------------
-SDL_Rect* SimpleSprite::getFrame(){
-    return frameArray[0]; // retorna o quadro único
-}
-
-SDL_Rect* SimpleSprite::getDest(){
-    destArray[0]->x=(int)posX;
-    destArray[0]->y=(int)posY;
-    return destArray[0];
+/** MÉTODOS */
+void SimpleSprite::addCollisionBox(int x, int y, int w, int h){
+    CollisionSet* set = new CollisionSet(); // cria um novo conjunto de caixas de colisão
+    set->addBox(x,y,w,h); // adiciona 
+    collSetArray.push_back(new CollisionSet()); // adiciona o conjunto de caixas de colisão para o quadro único
+    collSetArray[0]->addBox(10,10,image->width-20,image->height-20); // adiciona
+    
 }
 

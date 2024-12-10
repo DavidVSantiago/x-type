@@ -22,8 +22,9 @@ public:
     AnimatedSprite(BufferedImage* image, uint8_t lines, uint8_t cols);
     virtual ~AnimatedSprite();
 
-    /* GETTERS & SETTERS ----------------------------------------------------------*/
-    SDL_Rect* getFrame() override; // Retorna a informação do Frame do sprite a ser desenhado
+    /* MÉTODOS DO GAMELOOP --------------------------------------------------------*/
+    void update() override;
+
 };
 
     

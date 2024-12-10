@@ -11,7 +11,6 @@ public:
     SimpleSprite(BufferedImage* image); // recebe a ref da imagem do sprite
     virtual ~SimpleSprite();
 
-    /* GETTERS & SETTERS ----------------------------------------------------------*/
-    SDL_Rect* getFrame() override; // Retorna a informação do Quadro único do sprite a ser desenhado
-    SDL_Rect* getDest() override; // Retorna a informação da destino de desenho na tela
+    /** MÉTODOS */
+    void addCollisionBox(int x, int y, int w, int h);
 };

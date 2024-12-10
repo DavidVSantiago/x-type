@@ -7,6 +7,9 @@
 
 using namespace std;
 
+class Teste{
+    void renderizar();
+};
 /***********************************************************************************/
 /* CLASSE ABSTRATA QUE REPRESENTA A BASE DAS CENAS */
 /***********************************************************************************/
@@ -26,7 +29,7 @@ public:
 
     /* MÉTODOS DO GAMELOOP */
     virtual void handleEvents()=0; // pure virtual (sem implementação aqui. deve ser implementada na derivada)
-    virtual void update()=0; // pure virtual (sem implementação aqui. deve ser implementada na derivada)
+    virtual void update(); // pure virtual (sem implementação aqui. deve ser implementada na derivada)
     virtual void render();
 
     /* MÉTODOS */

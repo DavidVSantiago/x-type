@@ -12,7 +12,10 @@ class Sprite{
 public:
     /* ATRIBUTOS ------------------------------------------------------------------*/
     BufferedImage *image; // imagem do sprite
+    
     vector<SDL_Rect*> frameArray; // Array de Rects de origem para renderização
+    uint16_t frameIndex; // indice do quadro a ser renderizado
+
     vector<SDL_Rect*> destArray; // Array de Rcts de destino para renderização
     vector<CollisionSet*> collSetArray; // Array de conjuntos de caixas de colisão
     float posX, posY;
@@ -25,13 +28,15 @@ public:
     virtual ~Sprite();
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/
-    virtual SDL_Rect* getFrame()=0; // Retorna a informação do Frame do sprite a ser desenhado
-    virtual SDL_Rect* getDest()=0; // Retorna a informação da destino de desenho na tela
+    virtual SDL_Rect* getFrame(); // Retorna a informação do Frame do sprite a ser desenhado
+    virtual SDL_Rect* getDest(); // Retorna a informação da destino de desenho na tela
 
     /* MÉTODOS DO GAMELOOP --------------------------------------------------------*/
-    void render();
+    virtual void update();
+    virtual void render();
 
     /* MÉTODOS --------------------------------------------------------------------*/
     void move();
     void unmove();
+    void updateCollBoxes(); // atualiza as posições das caixas de colisão
 };

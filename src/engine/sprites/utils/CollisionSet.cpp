@@ -14,32 +14,27 @@ CollisionSet::~CollisionSet(){}
 void CollisionSet::render(){
     for(size_t i=0; i<collBoxList.size();i++){ // percorre cada caixa de colisão e desenha
         SDL_SetRenderDrawColor(this->res->renderer, 255, 0, 0, 255); // Vermelho (RGBA)
-        SDL_RenderDrawRect(this->res->renderer, collBoxList[i]);
+        SDL_RenderDrawRect(this->res->renderer, collBoxList[i]->rect);
     }
 }
 
 /* MÉTODOS --------------------------------------------------------------------*/
 void CollisionSet::addBox(int x,int y, int w, int h){
-    SDL_Rect* newBox = new SDL_Rect();
-    newBox->x=x;
-    newBox->y=y;
-    newBox->w=w;
-    newBox->h=h;
-    collBoxList.push_back(newBox);
+    SDL_Rect* rect = new SDL_Rect();
+    rect->x=x;
+    rect->y=y;
+    rect->w=w;
+    rect->h=h;
+    CollisionBox* box = new CollisionBox();
+    box->refPosX=x;
+    box->refPosY=y;
+    box->rect=rect;
+    collBoxList.push_back(box);
 }
-void CollisionSet::move(float speedX, float speedY){
+void CollisionSet::setBoxesPos(float posX, float posY){
     // move cada caixa de colisão
     for(size_t i=0; i<collBoxList.size();i++){
-        collBoxList[i]->x+=(speedX*this->res->deltaTime);
-        collBoxList[i]->y+=(speedY*this->res->deltaTime);
-        printf("posY: %d\n",collBoxList[i]->y);
-    }
-
-}
-void CollisionSet::unmove(float speedX, float speedY){
-    // desmove cada caixa de colisão
-    for(size_t i=0; i<collBoxList.size();i++){
-        collBoxList[i]->x-=(speedX*this->res->deltaTime);
-        collBoxList[i]->y-=(speedY*this->res->deltaTime);
+        collBoxList[i]->rect->x=collBoxList[i]->refPosX+(int)posX;
+        collBoxList[i]->rect->y=collBoxList[i]->refPosY+(int)posY;
     }
 }

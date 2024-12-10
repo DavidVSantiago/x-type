@@ -23,5 +23,5 @@ public:
     void update() override;
 
     /* MÉTODOS SOBRESCRITOS ------------------------------------------------*/
-    void checkCollisions() override;
+    void checkCollisions();
 };

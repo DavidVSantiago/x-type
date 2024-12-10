@@ -31,7 +31,7 @@ Cenario::Cenario(string name):SimpleScene(name){
     inimigo3->posY=100;
     inimigo3->speedY=100; // 100px/s
     //listaSprites.push_back(inimigo3);
-    person = new SimpleSprite(res->getImage("parada2"));
+    person = new SimpleSprite(res->getImage("parada2"),'parada.json');
     person->posX=480;
     person->posY=180;
     person->speedY=50;
@@ -49,6 +49,8 @@ void Cenario::handleEvents(){
 
 }
 void Cenario::update(){
+    SimpleScene::update(); // obrigatório
+    
     checkCollisions();
 }
 

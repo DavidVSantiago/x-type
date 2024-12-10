@@ -13,6 +13,11 @@ Scene::Scene(std::string name){
 Scene::~Scene(){}
 
 /* MÉTODOS DO GAMELOOP */
+void Scene::update(){
+    for(size_t i=0;i<layersListSize;i++){ // renderiza todos os layer da cena
+        layersList[i]->update();
+    }
+}
 void Scene::render(){
     for(size_t i=0;i<layersListSize;i++){ // renderiza todos os layer da cena
         layersList[i]->render();

@@ -11,5 +11,5 @@ SimpleScene::~SimpleScene(){}
 //---------------------------------------------------------------------------------------------------------
 
 void SimpleScene::update(){
-    this->checkCollisions(); // invoca a implementação a ser fornecida por quem herdar
+    Scene::update(); // obrigatório
 }
