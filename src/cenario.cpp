@@ -31,7 +31,7 @@ Cenario::Cenario(string name):SimpleScene(name){
     inimigo3->posY=100;
     inimigo3->speedY=100; // 100px/s
     //listaSprites.push_back(inimigo3);
-    person = new SimpleSprite(res->getImage("parada2"),'parada.json');
+    person = new SimpleSprite(res->getImage("parada2"));
     person->posX=480;
     person->posY=180;
     person->speedY=50;

@@ -21,7 +21,7 @@ SimpleSprite::SimpleSprite(BufferedImage* image):Sprite(image) {
     destArray[0]->x = destArray[0]->y=0.0;
 
     // define o array de Rects de origem para recorte do sprite
-    collSetArray[0]->addBox(30,5,image->width-60,image->height-10); // adiciona  
+    //collSetArray[0]->addBox(30,5,image->width-60,image->height-10); // adiciona  
 }
 SimpleSprite::~SimpleSprite(){}
 

@@ -33,14 +33,13 @@
     "map.width": 1,
     "openFiles": [
         "parada.tsx",
-        "parada..tsx",
         "sprite_inimigo.tsx"
     ],
     "project": "parada.tiled-project",
     "recentFiles": [
-        "parada..tsx",
+        "sprite_inimigo.tsx",
         "parada.tsx",
-        "sprite_inimigo.tsx"
+        "parada..tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
