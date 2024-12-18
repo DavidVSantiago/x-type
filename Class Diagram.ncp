@@ -48,11 +48,13 @@
         <Name>Sprite</Name>
         <Access>Public</Access>
         <Location left="959" top="1101" />
-        <Size width="200" height="332" />
+        <Size width="200" height="400" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public BufferedImage image</Member>
-        <Member type="Field">public SDL_Rect frameArray</Member>
-        <Member type="Field">public SDL_Rect destArray</Member>
+        <Member type="Field">public vector&lt;SDL_Rect&gt; frameArray</Member>
+        <Member type="Field">public vector&lt;SDL_Rect&gt; destArray</Member>
+        <Member type="Field">public uint16_t frameIndex</Member>
+        <Member type="Field">public vector&lt;CollisionSet&gt; collSetArray</Member>
         <Member type="Field">public float posX</Member>
         <Member type="Field">public float posY</Member>
         <Member type="Field">public float speedX</Member>
@@ -60,17 +62,19 @@
         <Member type="Field">public Resources res</Member>
         <Member type="Constructor">public Sprite(BufferedImage image)</Member>
         <Member type="Destructor">~Sprite()</Member>
-        <Member type="Method">public abstract SDL_Rect getFrame()</Member>
-        <Member type="Method">public abstract SDL_Rect getDest()</Member>
+        <Member type="Method">public SDL_Rect getFrame()</Member>
+        <Member type="Method">public SDL_Rect getDest()</Member>
+        <Member type="Method">public void update()</Member>
         <Member type="Method">public void render()</Member>
         <Member type="Method">public void move()</Member>
         <Member type="Method">public void unmove()</Member>
+        <Member type="Method">public void updateCollBoxes()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>SimpleSprite</Name>
         <Access>Public</Access>
-        <Location left="800" top="1519" />
+        <Location left="800" top="1577" />
         <Size width="214" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public SimpleSprite(BufferedImage image)</Member>
@@ -82,7 +86,7 @@
       <Entity type="Class">
         <Name>MultiSimpleSprite</Name>
         <Access>Public</Access>
-        <Location left="1128" top="1519" />
+        <Location left="1128" top="1577" />
         <Size width="368" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public uint16_t frameIndex</Member>
@@ -96,7 +100,7 @@
       <Entity type="Class">
         <Name>AnimatedSprite</Name>
         <Access>Public</Access>
-        <Location left="1128" top="1753" />
+        <Location left="1128" top="1811" />
         <Size width="368" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public float frameTime</Member>
@@ -170,17 +174,17 @@
       </Entity>
       <Entity type="Comment">
         <Text>Possui apenas um único quadro de sprite</Text>
-        <Location left="651" top="1456" />
+        <Location left="651" top="1514" />
         <Size width="222" height="50" />
       </Entity>
       <Entity type="Comment">
         <Text>Possui vários quadros. Cada quadro é usado para representar um estado, não quadros de uma animação!</Text>
-        <Location left="1408" top="1426" />
+        <Location left="1408" top="1484" />
         <Size width="226" height="62" />
       </Entity>
       <Entity type="Comment">
         <Text>Possui vários quadros. Cada quadro é usado para representar um quadro da animação.</Text>
-        <Location left="1518" top="1692" />
+        <Location left="1518" top="1750" />
         <Size width="184" height="62" />
       </Entity>
     </Entities>
@@ -190,7 +194,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>1035</X>
-          <Y>1458</Y>
+          <Y>1526</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="4" second="2">
@@ -198,7 +202,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>1085</X>
-          <Y>1458</Y>
+          <Y>1526</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="5" second="4">
@@ -248,7 +252,7 @@
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>1551</X>
-          <Y>1805</Y>
+          <Y>1863</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="2" second="1">

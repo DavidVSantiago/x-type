@@ -37,8 +37,8 @@
     ],
     "project": "parada.tiled-project",
     "recentFiles": [
-        "sprite_inimigo.tsx",
         "parada.tsx",
+        "sprite_inimigo.tsx",
         "parada..tsx"
     ],
     "tileset.lastUsedFormat": "tsx",

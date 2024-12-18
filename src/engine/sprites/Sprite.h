@@ -14,9 +14,9 @@ public:
     BufferedImage *image; // imagem do sprite
     
     vector<SDL_Rect*> frameArray; // Array de Rects de origem para renderização
-    uint16_t frameIndex; // indice do quadro a ser renderizado
-
     vector<SDL_Rect*> destArray; // Array de Rcts de destino para renderização
+    uint16_t frameIndex; // indice do quadro a ser renderizado
+    
     vector<CollisionSet*> collSetArray; // Array de conjuntos de caixas de colisão
     float posX, posY;
     float speedX;

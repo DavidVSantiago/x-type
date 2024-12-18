@@ -10,7 +10,7 @@ using namespace std;
 /** Representa uma caixa de colisão */
 typedef struct{
     SDL_Rect* rect; // coordenadas de renderização
-    int refPosX,refPosY; // posição de referência inicial
+    int refPosX,refPosY; // posição de referência, em relação ao sprite
 }CollisionBox;
 
 /** Representa uma conjunto de caixas de colisão. Geralmente associada a cada frame de um Sprite */

@@ -15,7 +15,7 @@ Cenario::Cenario(string name):SimpleScene(name){
     // Criar uma lista de sprites
     vector<Sprite*> listaSprites;
     bg = new SimpleSprite(res->getImage("bg2"));
-    listaSprites.push_back(bg);
+    // listaSprites.push_back(bg);
     inimigo = new AnimatedSprite(res->getImage("sprite_inimigo"),2,5);
     inimigo->posX=10;
     inimigo->posY=200;
