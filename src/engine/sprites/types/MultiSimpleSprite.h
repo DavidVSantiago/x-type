@@ -12,6 +12,6 @@ public:
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
     // recebe a ref da imagem do sprite, junto com as quantidades de linhas e colunas do sprite
     // de onde serão cortados os quadros (máximo de 255 linhas e 255 colunas)
-    MultiSimpleSprite(BufferedImage* image,uint8_t lines, uint8_t cols);
+    MultiSimpleSprite(string sprite_descriptor);
     virtual ~MultiSimpleSprite();
 };

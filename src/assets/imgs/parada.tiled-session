@@ -3,12 +3,16 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "parada.tsx",
+    "activeFile": "sprite_inimigo.tsx",
     "expandedProjectPaths": [
         "."
     ],
     "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
     "fileStates": {
+        "C:/Users/David Santiago/Documents/_CODES/x-type/tools/sprite-json-formatter/src/sprite_inimigo.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "parada..tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -32,13 +36,14 @@
     "map.tileWidth": 100,
     "map.width": 1,
     "openFiles": [
-        "parada.tsx",
-        "sprite_inimigo.tsx"
+        "sprite_inimigo.tsx",
+        "parada.tsx"
     ],
     "project": "parada.tiled-project",
     "recentFiles": [
         "parada.tsx",
         "sprite_inimigo.tsx",
+        "C:/Users/David Santiago/Documents/_CODES/x-type/tools/sprite-json-formatter/src/sprite_inimigo.tsx",
         "parada..tsx"
     ],
     "tileset.lastUsedFormat": "tsx",

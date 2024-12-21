@@ -16,7 +16,6 @@ SRC_CPP = \
 	src/engine/scenes/utils/SceneLayer.cpp \
 	src/engine/scenes/utils/SceneManager.cpp \
 	src/engine/scenes/types/SimpleScene.cpp \
-	src/engine/sprites/utils/BufferedImage.cpp \
 	src/engine/sprites/utils/CollisionSet.cpp \
 	src/engine/sprites/Sprite.cpp \
 	src/engine/sprites/types/SimpleSprite.cpp \

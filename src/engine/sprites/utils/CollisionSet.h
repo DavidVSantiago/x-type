@@ -8,10 +8,12 @@
 using namespace std; 
 
 /** Representa uma caixa de colisão */
-typedef struct{
+class CollisionBox{
+public:
     SDL_Rect* rect; // coordenadas de renderização
     int refPosX,refPosY; // posição de referência, em relação ao sprite
-}CollisionBox;
+    CollisionBox(int x, int y, int w, int h);
+};
 
 /** Representa uma conjunto de caixas de colisão. Geralmente associada a cada frame de um Sprite */
 class CollisionSet{

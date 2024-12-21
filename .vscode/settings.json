@@ -69,6 +69,22 @@
         "multisimplesprite.h": "c",
         "fstream": "cpp",
         "collisionbox": "cpp",
-        "collisionboxes.h": "c"
+        "collisionboxes.h": "c",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "sstream": "cpp",
+        "json.h": "c",
+        "json.hpp": "c",
+        "collisionset.h": "c",
+        "any": "cpp",
+        "codecvt": "cpp",
+        "cstring": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "ratio": "cpp",
+        "iomanip": "cpp",
+        "ranges": "cpp",
+        "valarray": "cpp",
+        "imageio.h": "c"
     }
 }

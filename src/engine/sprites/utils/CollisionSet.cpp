@@ -1,6 +1,19 @@
 #include "CollisionSet.h"
 
 // ---------------------------------------------------------------------------------------
+/** Representa uma caixa de colisão */
+// ---------------------------------------------------------------------------------------
+CollisionBox::CollisionBox(int x, int y, int w, int h){
+    rect = new SDL_Rect();
+    rect->x=x;
+    rect->y=y;
+    rect->w=w;
+    rect->h=h;
+    refPosX=x;
+    refPosY=y;
+}
+
+// ---------------------------------------------------------------------------------------
 /** Representa uma conjunto de caixas de colisão. Geralmente associado a cada frame de um Sprite */
 // ---------------------------------------------------------------------------------------
 
@@ -20,15 +33,7 @@ void CollisionSet::render(){
 
 /* MÉTODOS --------------------------------------------------------------------*/
 void CollisionSet::addBox(int x,int y, int w, int h){
-    SDL_Rect* rect = new SDL_Rect();
-    rect->x=x;
-    rect->y=y;
-    rect->w=w;
-    rect->h=h;
-    CollisionBox* box = new CollisionBox();
-    box->refPosX=x;
-    box->refPosY=y;
-    box->rect=rect;
+    CollisionBox* box = new CollisionBox(x,y,w,h);
     collBoxList.push_back(box);
 }
 void CollisionSet::setBoxesPos(float posX, float posY){

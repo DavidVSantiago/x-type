@@ -32,19 +32,6 @@
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>BufferedImage</Name>
-        <Access>Public</Access>
-        <Location left="445" top="1101" />
-        <Size width="381" height="162" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">public SDL_Texture texture</Member>
-        <Member type="Field">public uint16_t width</Member>
-        <Member type="Field">public uint16_t height</Member>
-        <Member type="Constructor">public BufferedImage(SDL_Texture texture, uint16_t width, uint16_t height)</Member>
-        <Member type="Destructor">~BufferedImage()</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
         <Name>Sprite</Name>
         <Access>Public</Access>
         <Location left="959" top="1101" />
@@ -189,7 +176,7 @@
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Generalization" first="3" second="2">
+      <Relationship type="Generalization" first="2" second="1">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -197,7 +184,7 @@
           <Y>1526</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Generalization" first="4" second="2">
+      <Relationship type="Generalization" first="3" second="1">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -205,11 +192,11 @@
           <Y>1526</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Generalization" first="5" second="4">
+      <Relationship type="Generalization" first="4" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Association" first="7" second="6">
+      <Relationship type="Association" first="6" second="5">
         <Label>Possui um lista</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
@@ -222,7 +209,7 @@
         <StartMultiplicity>1</StartMultiplicity>
         <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
-      <Relationship type="Generalization" first="8" second="7">
+      <Relationship type="Generalization" first="7" second="6">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -230,7 +217,7 @@
           <Y>693</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Association" first="6" second="2">
+      <Relationship type="Association" first="5" second="1">
         <Label>Possui um lista</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
@@ -239,6 +226,10 @@
         <StartMultiplicity>1</StartMultiplicity>
         <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
+      <Relationship type="Comment" first="9" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
       <Relationship type="Comment" first="10" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
@@ -246,23 +237,10 @@
       <Relationship type="Comment" first="11" second="4">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
-      </Relationship>
-      <Relationship type="Comment" first="12" second="5">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>1551</X>
           <Y>1863</Y>
         </BendPoint>
-      </Relationship>
-      <Relationship type="Association" first="2" second="1">
-        <Label>possui um</Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
     </Relationships>
   </ProjectItem>

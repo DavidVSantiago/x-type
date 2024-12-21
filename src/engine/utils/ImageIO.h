@@ -7,7 +7,6 @@
 #include <unordered_map>
 #include "libs/lodepng.h"
 #include <cstdint>
-#include "../sprites/utils/BufferedImage.h"
 
 using namespace std;
 

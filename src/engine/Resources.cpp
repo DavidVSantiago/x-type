@@ -39,6 +39,9 @@ void Resources::setRenderer(SDL_Renderer* renderer){
 void Resources::setImagesAsset(string path){
     PATH_IMGS_ASSETS = path;
 }
+string Resources::getImagesAsset(){
+    return PATH_IMGS_ASSETS;
+}
 
 uint64_t Resources::getTimeTick(){return SDL_GetPerformanceCounter();}
 uint64_t Resources::getTimeTickFrequency(){return SDL_GetPerformanceFrequency();}
@@ -59,13 +62,11 @@ bool Resources::loadImage(string fileName, string fileExt){
 
     delete[] imageData; // Liberar memória de imageData
     
-    // cria o objeto BufferedImage para ser retornado
-    BufferedImage* image = new BufferedImage(newTexture, width, height);
-    this->imagesMap[fileName] = image; // adiciona a imagem no mapa
+    this->imagesMap[fileName] = newTexture; // adiciona a imagem no mapa
     return true; // indica o sucesso da operação
 }
 
-BufferedImage* Resources::getImage(string imageName){
+SDL_Texture* Resources::getImage(string imageName){
     if (this->imagesMap.find(imageName) != this->imagesMap.end())
         return this->imagesMap[imageName];
     printf("imagem não encontrada para a chave %s!\n",imageName.c_str());
@@ -73,7 +74,7 @@ BufferedImage* Resources::getImage(string imageName){
 }
 void Resources::clearImagens(){
     for (auto& pair : imagesMap) { // percorre todos os pares do mapa
-        delete pair.second; // Libera a memória do BufferedImage*
+        delete pair.second; // Libera a memória do SDL_Texture*
     }
     imagesMap.clear(); // Remove todas as chaves e valores do mapa
 }

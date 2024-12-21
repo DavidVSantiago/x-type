@@ -107,6 +107,7 @@ int main(int argc, char* argv[]){
 
     // Converte os dados para JSON ------------------------------------------------------------------
     
+
     stringstream framesStream;
     for(int i=0;i<frames.size();i++){
         Frame* frame = frames[i];
@@ -133,7 +134,8 @@ int main(int argc, char* argv[]){
     <<"\n    \"img-width\":\""<<imagewidth->value()<<"\","
     <<"\n    \"img-height\":\""<<imageheight->value()<<"\","
     <<"\n    \"tile-width\":\""<<tilewidth->value()<<"\","
-    <<"\n    \"tile-height\":\""<<tileheight->value()<<"\",\n"
+    <<"\n    \"tile-height\":\""<<tileheight->value()<<"\","
+    <<"\n    \"tile-count\":\""<<frames.size()<<"\",\n"
     <<"    \"frames\": [\n"
     <<framesStream.str()
     <<"    ]\n"
