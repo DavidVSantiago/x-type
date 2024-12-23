@@ -21,6 +21,7 @@ Sprite::~Sprite(){}
 // MÉTODOS DO GAMELOOP
 //---------------------------------------------------------------------------------------------------------
 void Sprite::update(){
+    // atualiza a Rect Base
     destArray[frameIndex]->x=(int)posX;
     destArray[frameIndex]->y=(int)posY;
 }
@@ -48,16 +49,18 @@ void Sprite::move(){
     posY+=(speedY*this->res->deltaTime);
     updateCollBoxes();
 }
+
 void Sprite::unmove(){
     posX-=((speedX*this->res->deltaTime));
     posY-=((speedY*this->res->deltaTime));
     updateCollBoxes();
     
 }
+
 // atualiza as posições das caixas de colisão
 void Sprite::updateCollBoxes(){
     for(size_t i=0; i<collSetArray.size();i++){
-        collSetArray[i]->setBoxesPos(posX,posY);
+        collSetArray[i]->updateBoxes(posX,posY);
     }
 }
 

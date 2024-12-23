@@ -21,6 +21,7 @@ class CollisionSet{
     /* ATRIBUTOS -------------------------------------------------------*/
     vector<CollisionBox*> collBoxList; // lista de caixa de colisão
     Resources *res;
+    Display *display;
 
     /* CONSTRUTORES E DESTRUTORES --------------------------------------*/
     CollisionSet();
@@ -31,5 +32,5 @@ class CollisionSet{
 
     /* MÉTODOS --------------------------------------------------------------------*/
     void addBox(int x,int y, int w, int h);
-    void setBoxesPos(float posX, float posY);
+    void updateBoxes(int x, int y);
 };

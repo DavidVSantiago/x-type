@@ -28,7 +28,7 @@ public:
     Resources *res;
 
     /* CONSTRUTORES E DESTRUTORES -------------------------------------------------*/
-    Sprite(string sprite_descriptor); // recebe o nome do descritor do 
+    Sprite(string sprite_descriptor); // recebe o nome do descritor da imagem do sprite
     virtual ~Sprite();
 
     /* GETTERS & SETTERS ----------------------------------------------------------*/

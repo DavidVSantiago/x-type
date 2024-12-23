@@ -33,11 +33,13 @@ public:
     float deltaTime;
     bool vk_up,vk_down,vk_left,vk_right;
     SDL_Renderer* renderer;
+    SDL_Texture* renderTexture;
 
     /* MÉTODOS ---------------------------------------------------------*/
     static Resources* getInstance(); // obtém o singleton
     void initDisplay(uint16_t width, uint16_t height, uint32_t pixelFormat);
     void setRenderer(SDL_Renderer* renderer);
+    SDL_Renderer* getRenderer();
     void setImagesAsset(string path);
     string getImagesAsset();
 

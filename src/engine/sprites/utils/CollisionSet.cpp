@@ -20,6 +20,7 @@ CollisionBox::CollisionBox(int x, int y, int w, int h){
 /* CONSTRUTORES E DESTRUTORES --------------------------------------*/
 CollisionSet::CollisionSet(){
     res = Resources::getInstance();
+    display = res->getDisplay();
 }
 CollisionSet::~CollisionSet(){}
 
@@ -36,10 +37,10 @@ void CollisionSet::addBox(int x,int y, int w, int h){
     CollisionBox* box = new CollisionBox(x,y,w,h);
     collBoxList.push_back(box);
 }
-void CollisionSet::setBoxesPos(float posX, float posY){
+void CollisionSet::updateBoxes(int x, int y){
     // move cada caixa de colisão
     for(size_t i=0; i<collBoxList.size();i++){
-        collBoxList[i]->rect->x=collBoxList[i]->refPosX+(int)posX;
-        collBoxList[i]->rect->y=collBoxList[i]->refPosY+(int)posY;
+        collBoxList[i]->rect->x=collBoxList[i]->refPosX+x;
+        collBoxList[i]->rect->y=collBoxList[i]->refPosY+y;
     }
 }

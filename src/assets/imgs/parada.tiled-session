@@ -13,6 +13,10 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "bg.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "parada..tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -41,6 +45,7 @@
     ],
     "project": "parada.tiled-project",
     "recentFiles": [
+        "bg.tsx",
         "parada.tsx",
         "sprite_inimigo.tsx",
         "C:/Users/David Santiago/Documents/_CODES/x-type/tools/sprite-json-formatter/src/sprite_inimigo.tsx",

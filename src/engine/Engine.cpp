@@ -35,10 +35,19 @@ void Engine::update(){
 }
 
 void Engine::render(){
-    SDL_SetRenderDrawColor(this->res->renderer, 0, 0, 0, 255);
-    SDL_RenderClear(this->res->renderer);
-    this->sceneManager->render();
-    SDL_RenderPresent(this->res->renderer);
+    // renderiza todas as imagens no buffer de textura
+    SDL_SetRenderTarget(res->getRenderer(), res->renderTexture); // seta a renderização para o buffer de textura
+    SDL_SetRenderDrawColor(res->getRenderer(), 0, 0, 0, 255); // seta a cor preta
+    SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
+    this->sceneManager->render(); //renderiza todos os elementos da cena no buffer de textura
+
+
+    // copia o buffer de textura renderizado para a tela
+    SDL_SetRenderTarget(res->getRenderer(), NULL); // seta a renderização de volta para a tela
+    //SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
+    SDL_RenderCopy(res->getRenderer(), res->renderTexture, NULL, res->getDisplay()->scaled_destArray); // copia o buffer de textura
+    SDL_RenderPresent(this->res->renderer); // atualiza a tela
+
 }
 
 void Engine::gameloop(){
@@ -91,6 +100,8 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         res->isRunning=false;
         }else{
             res->setRenderer(SDL_CreateRenderer(res->getDisplay()->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
+            res->renderTexture = SDL_CreateTexture(res->getRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height); // textura de buffer para renderização intermediária
+            
             // inicializa o SceneManager
             this->sceneManager = SceneManager::getInstance();
             this->sceneManager->init();

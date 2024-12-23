@@ -36,6 +36,10 @@ void Resources::setRenderer(SDL_Renderer* renderer){
     this->renderer=renderer;
     imageIO->setRenderer(renderer);
 }
+SDL_Renderer* Resources::getRenderer(){
+    return renderer;
+}
+
 void Resources::setImagesAsset(string path){
     PATH_IMGS_ASSETS = path;
 }

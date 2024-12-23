@@ -9,6 +9,16 @@ Display::Display(uint16_t width, uint16_t height):screenWidth(width),screenHeigh
     displayWidth = displayMode.w;
     displayHeight = displayMode.h;
 
+    updateDisplayScale(); // faz os calculos de escalonamento da tela
+}
+
+
+Display::~Display(){
+    SDL_DestroyWindow(window);
+}
+
+
+void Display::updateDisplayScale(){
     // Calcula o fator de escala para crescer a tela para a tela cheia
     float scaleWidth = static_cast<float>(displayWidth) / screenWidth;
     float scaleHeight = static_cast<float>(displayHeight) / screenHeight;
@@ -21,8 +31,10 @@ Display::Display(uint16_t width, uint16_t height):screenWidth(width),screenHeigh
     // formula para calcular a nova origem, afastando o letterbox à esquerda.
     drawOriginX = (displayWidth - drawWidth) / 2;
     drawOriginY = (displayHeight - drawHeight) / 2;
-}
 
-Display::~Display(){
-    SDL_DestroyWindow(window);
+    scaled_destArray = new SDL_Rect();
+    scaled_destArray->x=drawOriginX;
+    scaled_destArray->y=drawOriginY;
+    scaled_destArray->w=drawWidth;
+    scaled_destArray->h=drawHeight;
 }
