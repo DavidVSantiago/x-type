@@ -21,9 +21,13 @@ void Engine::handleEvents(){
     while (SDL_PollEvent(&event)){
         switch (event.type){
             case SDL_QUIT: res->isRunning = false; break;
-            case SDL_KEYDOWN: if (event.key.keysym.sym == SDLK_ESCAPE)res->isRunning = false; break;
-            // case SDL_WINDOWEVENT:
-            //     this->oldFrameTime=this->res->getTimeTick();
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_ESCAPE) res->isRunning = false;
+                else if (event.key.keysym.sym == SDLK_f){
+                    if (res->getDisplay()->isFullscreen) res->getDisplay()->setFullScreen(false);
+                    else res->getDisplay()->setFullScreen(true);
+                    res->deltaTime=0;
+                }
             break;
         }
     }
@@ -37,14 +41,15 @@ void Engine::update(){
 void Engine::render(){
     // renderiza todas as imagens no buffer de textura
     SDL_SetRenderTarget(res->getRenderer(), res->renderTexture); // seta a renderização para o buffer de textura
-    SDL_SetRenderDrawColor(res->getRenderer(), 0, 0, 0, 255); // seta a cor preta
+    SDL_SetRenderDrawColor(res->getRenderer(), 0, 0, 0, 255); // seta a cor pretaf
     SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
     this->sceneManager->render(); //renderiza todos os elementos da cena no buffer de textura
 
 
     // copia o buffer de textura renderizado para a tela
     SDL_SetRenderTarget(res->getRenderer(), NULL); // seta a renderização de volta para a tela
-    //SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
+    SDL_SetRenderDrawColor(res->getRenderer(), 0, 0, 0, 255); // seta a cor pretaf
+    SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
     SDL_RenderCopy(res->getRenderer(), res->renderTexture, NULL, res->getDisplay()->scaled_destArray); // copia o buffer de textura
     SDL_RenderPresent(this->res->renderer); // atualiza a tela
 
@@ -94,14 +99,14 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         res->isRunning = false;
     }else{
         res->initDisplay(width,height,pixelFormat);
-        res->getDisplay()->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, res->getDisplay()->displayWidth, res->getDisplay()->displayHeight, SDL_WINDOW_SHOWN);
+        res->getDisplay()->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, res->getDisplay()->displayWidth, res->getDisplay()->displayWidth, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP);
         if(res->getDisplay()->window == NULL ){
         printf( "WNão pode criar a janela do SDL! SDL_Error: %s\n", SDL_GetError() );
         res->isRunning=false;
         }else{
             res->setRenderer(SDL_CreateRenderer(res->getDisplay()->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
             res->renderTexture = SDL_CreateTexture(res->getRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height); // textura de buffer para renderização intermediária
-            
+            res->getDisplay()->isFullscreen=true;
             // inicializa o SceneManager
             this->sceneManager = SceneManager::getInstance();
             this->sceneManager->init();
