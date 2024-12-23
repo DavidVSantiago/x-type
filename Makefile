@@ -21,6 +21,7 @@ SRC_CPP = \
 	src/engine/sprites/types/SimpleSprite.cpp \
 	src/engine/sprites/types/MultiSimpleSprite.cpp \
 	src/engine/sprites/types/AnimatedSprite.cpp \
+	src/engine/Display.cpp \
 	src/engine/Resources.cpp \
 	src/engine/Engine.cpp \
 	src/cenario.cpp \

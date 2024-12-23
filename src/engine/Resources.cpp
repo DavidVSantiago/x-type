@@ -16,22 +16,22 @@ Resources::~Resources(){}
 //---------------------------------------------------------------------------------------------------------
 Resources* Resources::getInstance(){
     if (instance == nullptr) {
-        instance = new Resources;
+        instance = new Resources();
+        instance->isRunning = true;
+        instance->vk_up = instance->vk_down = instance->vk_left = instance->vk_right = false;
+        instance->deltaTime = 0;
+        instance->renderer = nullptr;
+        instance->PATH_IMGS_ASSETS = "";
     }
     return instance;
 }
 
-void Resources::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
+void Resources::initDisplay(uint16_t width, uint16_t height, uint32_t pixelFormat){
+    display = new Display(width,height);
     imageIO = ImageIO::getInstance();
     imageIO->init(pixelFormat);
-    vk_up = vk_down = vk_left = vk_right = false;
-    screenWidth = width;
-    screenHeight = height;
-    deltaTime = 0;
-    window = nullptr;
-    renderer = nullptr;
-    PATH_IMGS_ASSETS = "";
 }
+
 void Resources::setRenderer(SDL_Renderer* renderer){
     this->renderer=renderer;
     imageIO->setRenderer(renderer);
@@ -82,3 +82,5 @@ void Resources::formatFileExt(string &str){
     if (!str.empty() && str[0] == '.') str.erase(0, 1);  // Remove o ponto no início, se houver
     transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::tolower(c); }); // converte para caixa baixa
 }
+
+Display* Resources::getDisplay(){return display;}

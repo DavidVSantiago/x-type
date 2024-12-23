@@ -25,7 +25,6 @@ private:
 public:
     /* ATRIBUTOS */
     SDL_Event event;
-    bool isRunning;
 
     /* MÉTODOS DO GAMELOOP */
     void handleEvents();

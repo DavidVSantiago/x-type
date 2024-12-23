@@ -51,7 +51,6 @@ void Cenario::handleEvents(){
 }
 void Cenario::update(){
     SimpleScene::update(); // obrigatório
-    
     checkCollisions();
 }
 
@@ -64,7 +63,7 @@ void Cenario::checkCollisions(){
     //     inimigo->unmove();
     //     inimigo->speedY*=-1;
     // }
-    if(inimigo2->posY<=0 || (inimigo2->posY+inimigo2->tileHeight)>=this->res->screenHeight){
+    if(inimigo2->posY<=0 || (inimigo2->posY+inimigo2->tileHeight)>=res->getDisplay()->screenHeight){
         inimigo2->unmove();
         inimigo2->speedY*=-1;
     }

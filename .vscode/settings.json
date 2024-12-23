@@ -85,6 +85,7 @@
         "iomanip": "cpp",
         "ranges": "cpp",
         "valarray": "cpp",
-        "imageio.h": "c"
+        "imageio.h": "c",
+        "display.h": "c"
     }
 }
