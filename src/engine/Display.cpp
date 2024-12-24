@@ -5,14 +5,15 @@
 Display::Display(uint16_t width, uint16_t height,bool fullscreen):screenWidth(width),screenHeight(height){    
     isFullscreen=fullscreen;
     updateDisplayScale(); // faz os calculos de escalonamento da tela
-    if(fullscreen)
-        window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, displayWidth, displayWidth, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP); // SDL_WINDOW_SHOWN
-    else
+    if(fullscreen){
+        #ifdef _WIN32 // para windows, é mais leve fazer um fake fullscreen (janela sem bordas)
         window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, displayWidth, displayHeight, SDL_WINDOW_SHOWN); // SDL_WINDOW_SHOWN
-    // if(res->getDisplay()->window == NULL){
-    //     printf( "Não pode criar a janela do SDL! SDL_Error: %s\n", SDL_GetError() );
-    //     res->isRunning=false;
-    // }
+        SDL_SetWindowBordered(window, SDL_FALSE);
+        #elif __linux__
+        window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, displayWidth, displayHeight, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP); // SDL_WINDOW_SHOWN
+        #endif
+    }else
+        window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, displayWidth, displayHeight, SDL_WINDOW_SHOWN); // SDL_WINDOW_SHOWN
 }
 
 
@@ -25,7 +26,14 @@ void Display::setFullScreen(bool fullScreen){
         isFullscreen = true;
         updateDisplayScale();
         // Alternar para fullscreen
+        #ifdef _WIN32 // para windows, é mais leve fazer um fake fullscreen (janela sem bordas)
+        SDL_SetWindowFullscreen(window, SDL_WINDOW_SHOWN);//SDL_WINDOW_SHOWN
+        SDL_SetWindowSize(window, displayWidth, displayHeight);
+        SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+        SDL_SetWindowBordered(window, SDL_FALSE);
+        #elif __linux__
         SDL_SetWindowFullscreen(window, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP);//SDL_WINDOW_SHOWN
+        #endif
         SDL_SetWindowSize(window, displayWidth, displayWidth);
         // cout << "tela cheia: " << displayWidth << "x" << displayHeight << endl;
     }else{

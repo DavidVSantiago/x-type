@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
 
     // incializa a engine
     Engine* engine = Engine::getInstance();
-    engine->init(640,480,false);
+    engine->init(640,480,true);
 
     // cria o cenario inicial
     Cenario* cenario = new Cenario("Cenario");
