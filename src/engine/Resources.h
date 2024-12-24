@@ -37,7 +37,8 @@ public:
 
     /* MÉTODOS ---------------------------------------------------------*/
     static Resources* getInstance(); // obtém o singleton
-    void initDisplay(uint16_t width, uint16_t height, uint32_t pixelFormat);
+    void initDisplay(uint16_t width, uint16_t height, uint32_t pixelFormat, bool fullscreen);
+    Display* getDisplay();
     void setRenderer(SDL_Renderer* renderer);
     SDL_Renderer* getRenderer();
     void setImagesAsset(string path);
@@ -49,5 +50,4 @@ public:
     SDL_Texture* getImage(string imageName); // obtém a ref de uma imagem específico
     void clearImagens(); // limpa a lista de imagens carregadas na memória
     void formatFileExt(string &str);
-    Display* getDisplay();
 };

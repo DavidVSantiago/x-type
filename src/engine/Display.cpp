@@ -2,8 +2,17 @@
 #include <iostream>
 
 /* CONSTRUTORES E DESTRUTORES --------------------------------------*/
-Display::Display(uint16_t width, uint16_t height):screenWidth(width),screenHeight(height){    
+Display::Display(uint16_t width, uint16_t height,bool fullscreen):screenWidth(width),screenHeight(height){    
+    isFullscreen=fullscreen;
     updateDisplayScale(); // faz os calculos de escalonamento da tela
+    if(fullscreen)
+        window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, displayWidth, displayWidth, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP); // SDL_WINDOW_SHOWN
+    else
+        window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, displayWidth, displayHeight, SDL_WINDOW_SHOWN); // SDL_WINDOW_SHOWN
+    // if(res->getDisplay()->window == NULL){
+    //     printf( "Não pode criar a janela do SDL! SDL_Error: %s\n", SDL_GetError() );
+    //     res->isRunning=false;
+    // }
 }
 
 

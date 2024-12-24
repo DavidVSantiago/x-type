@@ -82,7 +82,7 @@ Engine* Engine::getInstance(){
     return instance;
 }
 
-void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
+void Engine::init(uint16_t width, uint16_t height, bool fullscreen, uint32_t pixelFormat){
 
     // inicializa o Resources
     res = Resources::getInstance();
@@ -96,19 +96,17 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         res->isRunning = false;
     }else{
-        res->initDisplay(width,height,pixelFormat);
-        res->getDisplay()->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, res->getDisplay()->displayWidth, res->getDisplay()->displayWidth, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP); // SDL_WINDOW_SHOWN
-        if(res->getDisplay()->window == NULL){
-        printf( "Não pode criar a janela do SDL! SDL_Error: %s\n", SDL_GetError() );
-        res->isRunning=false;
-        }else{
-            res->setRenderer(SDL_CreateRenderer(res->getDisplay()->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
-            res->renderTexture = SDL_CreateTexture(res->getRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height); // textura de buffer para renderização intermediária
-            res->getDisplay()->isFullscreen=true;
-            // inicializa o SceneManager
-            this->sceneManager = SceneManager::getInstance();
-            this->sceneManager->init();
-        }
+        //inicializa o display  
+        res->initDisplay(width,height,pixelFormat,fullscreen);
+
+        // cria o renderiador 
+        res->setRenderer(SDL_CreateRenderer(res->getDisplay()->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
+        res->renderTexture = SDL_CreateTexture(res->getRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height); // textura de buffer para renderização intermediária
+        
+        // inicializa o SceneManager
+        this->sceneManager = SceneManager::getInstance();
+        this->sceneManager->init();
+        
     }
 }
 

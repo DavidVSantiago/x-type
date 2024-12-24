@@ -26,8 +26,8 @@ Resources* Resources::getInstance(){
     return instance;
 }
 
-void Resources::initDisplay(uint16_t width, uint16_t height, uint32_t pixelFormat){
-    display = new Display(width,height);
+void Resources::initDisplay(uint16_t width, uint16_t height, uint32_t pixelFormat, bool fullscreen){
+    display = new Display(width,height,fullscreen);
     imageIO = ImageIO::getInstance();
     imageIO->init(pixelFormat);
 }

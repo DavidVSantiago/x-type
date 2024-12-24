@@ -13,7 +13,7 @@ public:
     SDL_Rect *scaled_destArray; // Array de Rcts de destino para renderização, com os valores escalonados para renderização
     bool isFullscreen;
     /* CONSTRUTORES E DESTRUTORES --------------------------------------*/
-    Display(uint16_t width, uint16_t height);
+    Display(uint16_t width, uint16_t height, bool fullscreen);
     ~Display();
 
     /* MÉTODOS ---------------------------------------------------------*/
