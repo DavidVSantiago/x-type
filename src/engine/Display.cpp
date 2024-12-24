@@ -15,8 +15,8 @@ void Display::setFullScreen(bool fullScreen){
     if(fullScreen){
         isFullscreen = true;
         updateDisplayScale();
-        // Alternar para "fake fullscreen"
-        SDL_SetWindowFullscreen(window, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP);
+        // Alternar para fullscreen
+        SDL_SetWindowFullscreen(window, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP);//SDL_WINDOW_SHOWN
         SDL_SetWindowSize(window, displayWidth, displayWidth);
         // cout << "tela cheia: " << displayWidth << "x" << displayHeight << endl;
     }else{
@@ -34,6 +34,7 @@ void Display::setFullScreen(bool fullScreen){
 void Display::updateDisplayScale(){
     // obtém as dimensões da janela
     if(isFullscreen){
+        SDL_DisplayMode displayMode;
         if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) cerr << "Erro ao obter a resolução da tela! Erro: " << SDL_GetError() << endl;
         displayWidth = displayMode.w;
         displayHeight = displayMode.h;
@@ -45,15 +46,15 @@ void Display::updateDisplayScale(){
     // Calcula o fator de escala para crescer a tela para a tela cheia
     float scaleWidth = static_cast<float>(displayWidth) / screenWidth;
     float scaleHeight = static_cast<float>(displayHeight) / screenHeight;
-    scaleRatio = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight; // a menor das duas escalas (para caber no display)
+    float scaleRatio = (scaleWidth < scaleHeight) ? scaleWidth : scaleHeight; // a menor das duas escalas (para caber no display)
 
     // Calcula o tamanho das novas dimensões de desenho (preservando a proporção)
-    drawWidth = static_cast<uint16_t>(screenWidth * scaleRatio);
-    drawHeight = static_cast<uint16_t>(screenHeight * scaleRatio);
+    uint16_t drawWidth = static_cast<uint16_t>(screenWidth * scaleRatio);
+    uint16_t drawHeight = static_cast<uint16_t>(screenHeight * scaleRatio);
 
     // formula para calcular a nova origem, afastando o letterbox à esquerda.
-    drawOriginX = (displayWidth - drawWidth) / 2;
-    drawOriginY = (displayHeight - drawHeight) / 2;
+    float drawOriginX = (displayWidth - drawWidth) / 2;
+    float drawOriginY = (displayHeight - drawHeight) / 2;
 
     scaled_destArray = new SDL_Rect();
     scaled_destArray->x=drawOriginX;

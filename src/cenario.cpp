@@ -59,20 +59,39 @@ void Cenario::update(){
 //---------------------------------------------------------------------------------------------------------
 
 void Cenario::checkCollisions(){
-    if(inimigo->posY<=0 || (inimigo->posY+inimigo->tileHeight)>=res->getDisplay()->screenHeight){
-        inimigo->unmove();
+    if(inimigo->posY<=0){
+        inimigo->posY=1;
         inimigo->speedY*=-1;
     }
-    if(inimigo2->posY<=0 || (inimigo2->posY+inimigo2->tileHeight)>=res->getDisplay()->screenHeight){
-        inimigo2->unmove();
+    if((inimigo->posY+inimigo->tileHeight)>=res->getDisplay()->screenHeight){
+        inimigo->posY=res->getDisplay()->screenHeight-inimigo->tileHeight-1;
+        inimigo->speedY*=-1;
+    }
+
+    if(inimigo2->posY<=0){
+        inimigo2->posY=1;
         inimigo2->speedY*=-1;
     }
-    if(inimigo3->posY<=0 || (inimigo3->posY+inimigo3->tileHeight)>=res->getDisplay()->screenHeight){
-        inimigo3->unmove();
+    if((inimigo2->posY+inimigo2->tileHeight)>=res->getDisplay()->screenHeight){
+        inimigo2->posY=res->getDisplay()->screenHeight-inimigo2->tileHeight-1;
+        inimigo2->speedY*=-1;
+    }
+
+    if(inimigo3->posY<=0){
+        inimigo3->posY=1;
         inimigo3->speedY*=-1;
     }
-    if(person->posY<=0 || (person->posY+person->tileHeight)>=res->getDisplay()->screenHeight){
-        person->unmove();
+    if((inimigo3->posY+inimigo3->tileHeight)>=res->getDisplay()->screenHeight){
+        inimigo3->posY=res->getDisplay()->screenHeight-inimigo3->tileHeight-1;
+        inimigo3->speedY*=-1;
+    }
+
+    if(person->posY<=0){
+        person->posY=1;
+        person->speedY*=-1;
+    }
+    if((person->posY+person->tileHeight)>=res->getDisplay()->screenHeight){
+        person->posY=res->getDisplay()->screenHeight-person->tileHeight-1;
         person->speedY*=-1;
     }
 }

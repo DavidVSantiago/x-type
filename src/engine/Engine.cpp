@@ -26,7 +26,7 @@ void Engine::handleEvents(){
                 else if (event.key.keysym.sym == SDLK_f){
                     if (res->getDisplay()->isFullscreen) res->getDisplay()->setFullScreen(false);
                     else res->getDisplay()->setFullScreen(true);
-                    res->deltaTime=0;
+                    res->deltaTime=0.0;
                 }
             break;
         }
@@ -45,14 +45,12 @@ void Engine::render(){
     SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
     this->sceneManager->render(); //renderiza todos os elementos da cena no buffer de textura
 
-
     // copia o buffer de textura renderizado para a tela
     SDL_SetRenderTarget(res->getRenderer(), NULL); // seta a renderização de volta para a tela
     SDL_SetRenderDrawColor(res->getRenderer(), 0, 0, 0, 255); // seta a cor pretaf
     SDL_RenderClear(res->getRenderer()); // limpa a tela na cor preta
     SDL_RenderCopy(res->getRenderer(), res->renderTexture, NULL, res->getDisplay()->scaled_destArray); // copia o buffer de textura
     SDL_RenderPresent(this->res->renderer); // atualiza a tela
-
 }
 
 void Engine::gameloop(){
@@ -99,9 +97,9 @@ void Engine::init(uint16_t width, uint16_t height, uint32_t pixelFormat){
         res->isRunning = false;
     }else{
         res->initDisplay(width,height,pixelFormat);
-        res->getDisplay()->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, res->getDisplay()->displayWidth, res->getDisplay()->displayWidth, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP);
-        if(res->getDisplay()->window == NULL ){
-        printf( "WNão pode criar a janela do SDL! SDL_Error: %s\n", SDL_GetError() );
+        res->getDisplay()->window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, res->getDisplay()->displayWidth, res->getDisplay()->displayWidth, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP); // SDL_WINDOW_SHOWN
+        if(res->getDisplay()->window == NULL){
+        printf( "Não pode criar a janela do SDL! SDL_Error: %s\n", SDL_GetError() );
         res->isRunning=false;
         }else{
             res->setRenderer(SDL_CreateRenderer(res->getDisplay()->window, -1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
