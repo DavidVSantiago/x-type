@@ -8,21 +8,20 @@ Resources *Resources::instance = nullptr; // inicialização da instância (espe
 //---------------------------------------------------------------------------------------------------------
 // CONSTRUTORES E DESTRUTORES privados
 //---------------------------------------------------------------------------------------------------------
-Resources::Resources(){}
+Resources::Resources(){
+    isRunning = true;
+    vk_up = vk_down = vk_left = vk_right = false;
+    deltaTime = 0;
+    renderer = nullptr;
+    PATH_IMGS_ASSETS = "";
+}
 Resources::~Resources(){}
 
 //---------------------------------------------------------------------------------------------------------
 // MÉTODOS
 //---------------------------------------------------------------------------------------------------------
 Resources* Resources::getInstance(){
-    if (instance == nullptr) {
-        instance = new Resources();
-        instance->isRunning = true;
-        instance->vk_up = instance->vk_down = instance->vk_left = instance->vk_right = false;
-        instance->deltaTime = 0;
-        instance->renderer = nullptr;
-        instance->PATH_IMGS_ASSETS = "";
-    }
+    if (instance == nullptr) instance = new Resources();
     return instance;
 }
 
@@ -88,3 +87,7 @@ void Resources::formatFileExt(string &str){
 }
 
 Display* Resources::getDisplay(){return display;}
+
+void Resources::initMidiDecoder(){
+    midiDecoder = new MidiDecoder();
+}

@@ -92,6 +92,15 @@ void Engine::init(uint16_t width, uint16_t height, bool fullscreen, uint32_t pix
     this->startFrameTime = this->oldFrameTime = this->res->getTimeTick();
 
     // inicializa o SDL ---------------
+    // inicializa o audio
+    if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+        printf( "SDL could not initialize audio! SDL_Error: %s\n", SDL_GetError() );
+        res->isRunning = false;
+    }else{
+        cout << "Audio carregou com sucesso!" << endl;
+        res->initMidiDecoder();
+    }
+    
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 ){
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         res->isRunning = false;
@@ -106,7 +115,6 @@ void Engine::init(uint16_t width, uint16_t height, bool fullscreen, uint32_t pix
         // inicializa o SceneManager
         this->sceneManager = SceneManager::getInstance();
         this->sceneManager->init();
-        
     }
 }
 
