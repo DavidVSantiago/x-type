@@ -32,18 +32,20 @@ MidiDecoder::MidiDecoder(){
             cout << "Carregou o soundfont com sucesso" << endl;
             tsf_set_output(soundFont, TSF_STEREO_INTERLEAVED, 44100, 0.0f);
             // Buffer para saída de áudio
-            float audioBuffer[44100]; // 1 segundo de áudio a 44.1kHz
+            float audioBuffer[44100]; // 46ms de audio 
             int currentTime = 0;
+            
             for(tml_message* msg = midi; msg; msg=msg->next){ // percorre as mensagens do arquivo midi
 
                 int delay = msg->time - currentTime;
                 currentTime = msg->time;
 
-                // Renderizar áudio enquanto espera o próximo evento
-                tsf_render_float(soundFont, audioBuffer, delay * 44.1, 0);
-
-                // Enviar o buffer para reprodução no SDL
-                SDL_QueueAudio(audioDevice, audioBuffer, delay * 44.1 * sizeof(float) * 2);
+                // Renderizar áudio durante o intervalo
+                int samplesToRender = delay * 44.1; // 44.1 samples/ms
+                int batch = std::min(samplesToRender, 44100);
+                tsf_render_float(soundFont, audioBuffer, batch, 0);// Renderizar áudio para o buffer
+                SDL_QueueAudio(audioDevice, audioBuffer, batch * sizeof(float) * 2);// Enviar o buffer para reprodução no SDL
+                samplesToRender -= batch;
 
                 if (msg->type == TML_NOTE_ON) { // começa a tocar nota
                     tsf_note_on(soundFont, msg->channel, msg->key, msg->velocity / 127.0f); // toca a nota

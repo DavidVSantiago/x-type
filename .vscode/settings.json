@@ -86,6 +86,7 @@
         "ranges": "cpp",
         "valarray": "cpp",
         "imageio.h": "c",
-        "display.h": "c"
+        "display.h": "c",
+        "chrono": "cpp"
     }
 }
