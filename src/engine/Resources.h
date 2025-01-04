@@ -8,7 +8,6 @@
 #include "utils/libs/lodepng.h"
 #include "utils/ImageIO.h"
 #include "Display.h"
-#include "audio/MidiDecoder.h"
 
 using namespace std;
 
@@ -22,7 +21,6 @@ private:
     unordered_map<string, SDL_Texture*> imagesMap;
     ImageIO* imageIO;
     Display* display;
-    MidiDecoder *midiDecoder;
 
     /* CONSTRUTORES E DESTRUTORES privados -----------------------------*/
     Resources();
@@ -52,5 +50,4 @@ public:
     SDL_Texture* getImage(string imageName); // obtém a ref de uma imagem específico
     void clearImagens(); // limpa a lista de imagens carregadas na memória
     void formatFileExt(string &str);
-    void initMidiDecoder();
 };

@@ -1,7 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include "engine/Engine.h"
-#include "engine/audio/MidiDecoder.h"
 #include "cenario.h"
 
 int main(int argc, char **argv) {

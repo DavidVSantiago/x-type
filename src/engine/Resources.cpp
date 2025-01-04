@@ -87,7 +87,3 @@ void Resources::formatFileExt(string &str){
 }
 
 Display* Resources::getDisplay(){return display;}
-
-void Resources::initMidiDecoder(){
-    midiDecoder = new MidiDecoder();
-}

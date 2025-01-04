@@ -3,6 +3,8 @@
 #include "Resources.h"
 #include "scenes/utils/SceneManager.h"
 #include "scenes/Scene.h"
+#include "audio/AudioPlayer.h"
+#include "audio/MidiDecoder.h"
 
 using namespace std;
 
@@ -15,8 +17,9 @@ private:
     /* ATRIBUTOS PRIVADOS */
     Uint64 startFrameTime, endFrameTime, oldFrameTime, diffTime, frameDelay;
 
-    Resources* res;
-    SceneManager* sceneManager;
+    Resources *res;
+    SceneManager *sceneManager;
+    AudioPlayer *audioPlayer;
 
     /* CONSTRUTORES E DESTRUTORES privados -----------------------------*/
     Engine();
@@ -36,4 +39,6 @@ public:
     static Engine* getInstance(); // obtém o singleton
     void init(uint16_t width, uint16_t height, bool fullscreen, uint32_t pixelFormat = ImageIO::RGBA32);
     void start(Scene* startScene, uint64_t timeMilis);
+
+    void playAudio();
 };

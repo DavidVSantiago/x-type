@@ -89,6 +89,7 @@ void Cenario::checkCollisions(){
     if(person->posY<=0){
         person->posY=1;
         person->speedY*=-1;
+        Engine::getInstance()->playAudio();
     }
     if((person->posY+person->tileHeight)>=res->getDisplay()->screenHeight){
         person->posY=res->getDisplay()->screenHeight-person->tileHeight-1;

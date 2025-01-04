@@ -12,6 +12,7 @@ SRC_C = \
 SRC_CPP = \
 	src/engine/utils/libs/lodepng.cpp \
 	src/engine/utils/ImageIO.cpp \
+	src/engine/audio/AudioPlayer.cpp \
 	src/engine/scenes/Scene.cpp \
 	src/engine/scenes/utils/SceneLayer.cpp \
 	src/engine/scenes/utils/SceneManager.cpp \
@@ -21,7 +22,6 @@ SRC_CPP = \
 	src/engine/sprites/types/SimpleSprite.cpp \
 	src/engine/sprites/types/MultiSimpleSprite.cpp \
 	src/engine/sprites/types/AnimatedSprite.cpp \
-	src/engine/audio/MidiDecoder.cpp \
 	src/engine/Display.cpp \
 	src/engine/Resources.cpp \
 	src/engine/Engine.cpp \

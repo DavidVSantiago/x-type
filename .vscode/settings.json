@@ -87,6 +87,13 @@
         "valarray": "cpp",
         "imageio.h": "c",
         "display.h": "c",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "thread": "cpp",
+        "semaphore": "c",
+        "stop_token": "c",
+        "mididecoder.h": "c",
+        "audioplayer.h": "c",
+        "tsf.h": "c",
+        "tml.h": "c"
     }
 }

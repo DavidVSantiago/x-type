@@ -98,7 +98,8 @@ void Engine::init(uint16_t width, uint16_t height, bool fullscreen, uint32_t pix
         res->isRunning = false;
     }else{
         cout << "Audio carregou com sucesso!" << endl;
-        res->initMidiDecoder();
+        audioPlayer = new AudioPlayer(44100,"src/assets/audio/teste.mid","src/assets/audio/AlgolSound.sf2");
+        audioPlayer->init();
     }
     
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 ){
@@ -122,4 +123,8 @@ void Engine::start(Scene* startScene, uint64_t timeMilis){
     sceneManager->startScene(startScene,timeMilis);
     SDL_Delay(1000);
     gameloop();
+}
+
+void Engine::playAudio(){
+    audioPlayer->playAudio();
 }
